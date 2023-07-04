@@ -20,7 +20,7 @@
 
     <h2>checkbox type</h2>
     <input type ="checkbox" name ="hobby" value="야구"/> 야구
-    <input type ="checkbox" name ="hobby" value="축구"/> 축구
+    <input type ="checkbox" name ="hobby" value="축구" checked/> 축구
     
     <h2>radio type</h2>
     <input type ="radio" name="gender" value="남자"/> 남자
@@ -32,5 +32,24 @@
     <input type ="radio" name="favorite" value="줄넘기" id="줄넘기"/>
     <label for="줄넘기">줄넘기</label>
 
+    <h2>date type</h2>
+    <input type="date" name ="birth"/>
+    <input type="datetime-local" name ="birth-time"/>
+
+    <h2>select tag</h2>
+    <select name="select-name">
+        <optgroup label ="옵션 1~2">
+            <option value="option1">옵션1</option>
+            <option value="option2" >옵션2</option>
+        </optgroup>
+        <optgroup label ="옵션 3~4">
+            <option value="option3" selected>옵션3</option>
+            <option value="option4" disabled>옵션4</option>
+        </optgroup>
+    </select>
+
+    <div>
+        <input type="text" name="email" value="sssss@spreatics.com" readonly/>
+    </div>
 </body>
 </html>
