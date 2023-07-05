@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div > p{
+        /* div > p{
             color: blue;
         }
         div .orange{
@@ -27,6 +27,32 @@
         .fruits h3:last-child{
             color: red;
         }
+        .fruits div:nth-child(2){
+           background-color: green;
+        } */
+
+        /* .fruits span:nth-child(2n){
+            background-color: green;
+            color: white;
+        } */
+        .fruits span:not(orange){
+            background-color: green;
+            color: white;
+        }
+        .example::after{
+            content: "🙏";
+            }
+
+        .example::before{
+            content: "🙏🏿";
+        }
+        
+        [type=text]{
+            background-color: green;
+        }
+        [value]{
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -43,12 +69,19 @@
 
     <br /><br /><br /><br />
     <div class="fruits">
-        <div>바나나</div>
         <span>딸기</span>
         <span>수박</span>
         <div>오렌지</div>
         <p>망고</p>
         <h3>사과</h3>
     </div>
+
+    <div class="example">
+        바로가기
+    </div>
+
+    <input type="text" value="HEROPY" />
+    <input type="password" value="1234" />
+    <input type="text" value="ABCD" disabled />
 </body>
 </html>
