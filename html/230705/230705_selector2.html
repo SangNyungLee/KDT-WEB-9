@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector2</title>
+    <style>
+        a:hover{
+            color: red;
+        }
+
+        button{
+            color: #0bdbcdf3;
+        }
+        button:hover{
+            color: aqua;
+            background-color: blue;
+        }
+        button:active{
+            background-color: yellow;
+            color: black;
+        }
+        a:active{
+            color: yellow;
+        }
+        /* input:focus{
+            background-color: orange;
+        } */
+        div > .name-input:focus{
+            color: aqua;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.naver.com" target="_blank">NAVER</a>
+    <br/>
+    <button>버튼</button>
+    <br />
+    <div>
+    <input class="name-input" type="text" name="name" placeholder="이름을 입력하세요."/>
+    </div>
+</body>
+</html>

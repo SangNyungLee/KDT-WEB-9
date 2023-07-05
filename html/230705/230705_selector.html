@@ -5,28 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* *{
-            color: rebeccapurple;
-        } */
-        li{
-            color: blueviolet;
+        div > p{
+            color: blue;
         }
-        .strawberry{
-            background-color: brown;
+        div .orange{
+            color: aquamarine;
+        }
+        ul + div{
+           color: purple;
         }
 
-        #ex{
-            background-color: aqua;
+        .apple ~ li{
+            background-color: maroon;
+        }
+        .fruits span:first-child{
+            color: red;
+        }
+        .fruits div:first-child{
+            color: yellow;
+        }
+        .fruits h3:last-child{
+            color: red;
         }
     </style>
 </head>
 <body>
-    <div id="ex" class="">안녕?</div>
-    <span>안녕 안녕?</span>
-    
-    <ul>
-        <li>사과</li>
-        <li class="strawberry">딸기</li>
-    </ul>
+    <div>
+        <ul>
+            <li class="apple">사과</li>
+            <li>딸기</li>
+            <li class="orange">오렌지</li>
+        </ul>
+        <div>당근</div>
+        <p>토마토</p>
+        <span class="orange">오렌지</span>
+    </div>
+
+    <br /><br /><br /><br />
+    <div class="fruits">
+        <div>바나나</div>
+        <span>딸기</span>
+        <span>수박</span>
+        <div>오렌지</div>
+        <p>망고</p>
+        <h3>사과</h3>
+    </div>
 </body>
 </html>
