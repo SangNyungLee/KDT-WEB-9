@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습2</title>
+    <style>
+        .container{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+        .item{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+
+        }
+        .one{
+            top: 0px;
+            left: 0px;
+            background-color: aqua;
+            z-index: 1;
+
+        }
+        .two{
+            top: 30px;
+            left: 30px;
+            background-color: black;
+            z-index: 2;
+        }
+        .three{
+            top: 60px;
+            left: 60px;
+            background-color: blue;
+            z-index: 3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item one"></div>
+        <div class="item two"></div>
+        <div class="item three"></div>
+
+    </div>
+
+</body>
+</html>

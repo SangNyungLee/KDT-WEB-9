@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .par{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background-color: green;
+        }
+
+        .relative{
+            background-color: aqua;
+            position: relative;
+            left: 50px;
+            top: 30px;
+
+        }
+        .parents{
+            background-color: red;
+            position: absolute;
+            right: 30px;
+            bottom: 100px;
+        }
+        .fixed{
+            background-color: blue;
+            position: fixed;
+            right: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+        <div class="par">
+            <div class="relative"></div>
+            <div class="parents"></div>
+            <div class="fixed ">
+        </div>
+
+        </div>
+
+
+</body>
+</html>

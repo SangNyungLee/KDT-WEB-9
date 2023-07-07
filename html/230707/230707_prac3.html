@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습3</title>
+    <style>
+
+        .circle{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .eye{
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            top: 70px;
+            left: 70px;
+            z-index: 6;
+        }
+        .eye2{
+            background-color: black;
+            width: 20px;
+            height: 20px;
+            top: 80px;
+            left: 70px;
+            z-index: 7;
+        }
+        .one{
+            background-color: blue;
+            top: 50px;
+            left: 50px;
+            z-index: 1;
+        }
+        .two{
+            background-color: skyblue;
+            top: 100px;
+            left: 120px;
+            z-index: 2;
+        }
+        .three{
+            background-color: indigo;
+            top: 140px;
+            left: 160px;
+            z-index: 3;
+        }
+        .four{
+            background-color: rgb(19, 19, 126);
+            top: 140px;
+            left: 220px;
+            z-index: 4;
+        }
+        .five{
+            background-color: rgb(121, 121, 212);
+            top: 140px;
+            left: 290px;
+            z-index: 8;
+        }
+        .pic{
+            position: absolute;
+            width: 400px;
+            height: 110px;
+            top: 150px;
+            z-index: 5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="circle one"></div>
+    <div class="circle two"></div>
+    <div class="circle three"></div>
+    <div class="circle four"></div>
+    <div class="circle five"></div>
+    <div class="circle eye"></div>
+    <div class="circle eye2"></div>
+    <img src="../../image/pngwing.png" class="pic"/>
+</body>
+</html>

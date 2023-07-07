@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stack_order</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        .container{
+            position: relative;
+            background-color: black;
+            width: 400px;
+            height: 400px;
+        }
+        .item{
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .one{
+            background-color: red;
+            top: 20px;
+            left: 20px;
+            z-index: 3;
+        }
+        .two{
+            background-color: orange;
+            top: 40px;
+            left: 40px;
+            z-index: 2;
+        }
+        .three{
+            background-color: yellow;
+            top: 60px;
+            left: 60px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="item one"></div>
+        <div class="item two"></div>
+        <div class="item three"></div>
+
+    </div>
+</body>
+</html>
