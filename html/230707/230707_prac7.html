@@ -3,53 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>display_flex</title>
+    <title>실습7</title>
     <style>
-        body{
-            margin: 0;
-        }
         .container{
+            width: 500px;
             height: 500px;
             display: flex;
-            /* justify-content: space-evenly; */
             flex-wrap: wrap;
-            /* align-items: center; */
-            /* align-content: flex-start; */
-            
+            align-items: center;
+            /* align-content: center; */
+            justify-content: center;
+            background-color: black;
         }
-
-        .container > div, .container11 {
+        .container > div{
             width: 100px;
             height: 100px;
         }
         .red{
             background-color: red;
         }
-        .orange{
-            background-color: orange;
-        }
         .yellow{
-            background-color: yellow;
+            background-color: yellowgreen;
+        }
+        .green{
+            background-color: white;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="red"></div>
-        <div class="orange"></div>
         <div class="yellow"></div>
+        <div class="green"></div>
         <div class="red"></div>
-        <div class="orange"></div>
-        <div class="yellow"></div>
+        <div class="yellow"></div> 
+        <div class="green"></div>
         <div class="red"></div>
-        <div class="orange"></div>
         <div class="yellow"></div>
     </div>
-
-    <!-- <div class="container-1">
-        <div class="red"></div>
-        <div class="orange"></div>
-        <div class="yellow"></div>
-    </div> -->
 </body>
 </html>
