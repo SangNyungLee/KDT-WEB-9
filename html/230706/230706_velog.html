@@ -1,14 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>velog</title>
     <style>
+        .parents{
+            width: 340px;
+            height: 270px;
+            display: flex;
+            background-color: skyblue;
+            flex-wrap: wrap;
+            align-items: center;
+            /* justify-content: space-evenly; */
+            /* flex-direction: column-reverse; */
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        .child1{
+            /* width: 100px; */
+            /* height: 70px; */
+            background-color: yellow;
+        }
+        .child2{
+            /* width: 130px; */
+            /* height: 80px; */
+            background-color: green;
+        }
+        .child3{
+            /* width: 100px; */
+            /* height: 130px; */
+            background-color: brown;
+        }
+        .child4{
+            background-color: aquamarine;
+        }
+        .child5{
+            background-color: blueviolet;
+        }
+
     </style>
 </head>
 <body>
-    <div style="font-weight: 900;">테스트</div>
-    <div>테스트</div>
+    <div class="parents">
+    <div class="box child1"></div>
+    <div class="box child2"></div>
+    <div class="box child3"></div>
+    <!-- <div class="box child4"></div> -->
+    <!-- <div class="box child5"></div> -->
+    <!-- <div class="box child3"></div> -->
+    </div>
+
 </body>
 </html>
