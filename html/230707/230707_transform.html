@@ -8,9 +8,14 @@
         .container{
             display: flex;
         }
-        img{
+        img {
             width: 100px;
             height: 100px;
+            /* transition-property: transform;
+            transition-duration: 2s;
+            transition-timing-function: linear;
+            transition-delay: 2s; */
+            transition: transform 1s linear 0s;
         }
 
         img#translate:active{
@@ -29,9 +34,27 @@
         img#skew:active{
             transform: skew(-45deg);
         }
+
+        .box{
+            margin-left: 0;
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+
+        .box:hover{
+            /* width: 200px; */
+            /* height: 200px; */
+            margin-left: 100px;
+            /* transition: margin-left 2s; */
+        }
     </style>
 </head>
 <body>
+    <div class="box">
+
+
+    </div>
     <div class="container">
     <div><img 
         id="translate" 
