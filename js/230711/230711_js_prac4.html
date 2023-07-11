@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습4,5</title>
+    
+</head>
+<body>
+    <script>
+        let age = Number(prompt("나이를 입력해주세요."));
+        let sex = prompt("성별을 입력해주세요.");
+
+        if(sex=="남자"){
+        if(age >= 20){
+            alert("성인 남자입니다.");
+            } else if(age>= 17){
+                alert("고등학생 남자입니다.");
+            } else if(age >=14){
+                alert("중학생 남자입니다.");
+            } else if(age >= 8){
+                alert("초등학생 남자입니다.");
+            } else{
+                alert("유아 남자입니다.");
+        }
+        }
+        if(sex=="여자"){
+            if(age >= 20){
+            alert("성인여자입니다.");
+            } else if(age>= 17){
+                alert("고등 여학생입니다.");
+            } else if(age >=14){
+                alert("중학 여학생입니다.");
+            } else if(age >= 8){
+                alert("초등 여학생입니다.");
+            } else{
+                alert("유아 여자입니다.");
+            }
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+        let fruits=["apple", "banana", "orange", "grape"]
+        for(let i=0; i<fruits.length ; i++){
+            console.log("fruits"+i+ ": "+ fruits[i]);
+        }
+        let number=5;
+        let add =0;
+        for(let i=1; i<=number ; i++){
+            add += i; 
+        }
+        console.log(add);
+
+        for(let i=5 ; i>0 ; i--){
+            console.log(i);
+        }
+
+        for(let i=0; i<=5 ; i++){
+            for(let j=0; j<5 ; j++){
+                console.log(i,j);
+            }
+        }
+
+        let index = 0;
+        while(index<fruits.length){
+            console.log(fruits[index]);
+            index++;
+        }
+*/
+        // 사용자가 숫자를 입력하길 기대하면서, 1~숫자까지의 합을 구하는 코드
+
+        // let num = NaN;
+        // while(isNaN(num)){
+        //     num = Number(prompt(`숫자를${num}입력하세여`));
+        //     console.log(num)
+        // }
+
+        // while문은 보통 반복될 횟수가 지정되어 있지 않을 때 (할수없을때)사용한다.
+ 
+ /*
+        let number2 =5;
+        while(true){
+            number2 = Number(prompt(`10이상의 숫자를 입력해주세요.`))
+            if(number2 >= 10 ){
+                break;
+            }
+        }
+
+        let i=2;
+        while(i<10){12
+            let j=1;
+            while(j<10){
+                console.log(`${i} X ${j} = ${i*j}`)
+                j++;
+            }
+            i++
+        }
+
+        let i=0;
+        while(i<10){
+            console.log(i)
+            i++;
+        }
+
+        let j=10;
+        do{
+            //반복할 코드
+            console.log(j)
+            j++
+        }
+        while(j<10);
+
+        */
+        let fruits=["apple", "banana", "orange", "grape"]
+        for(let i=0; i<fruits.length ; i++){
+            console.log(fruits[i]);
+        }
+
+        //변수선언 of 배열
+        for(let f of fruits){
+            console.log(f);
+        }
+    </script>
+</body>
+</html>

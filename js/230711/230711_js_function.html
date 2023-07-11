@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sayHello(){        //함수 선언문
+            console.log("hello");
+        }
+        sayHello();
+
+        let sayHello2 = function(){ //함수 표현식
+            console.log("hello2");
+        }
+        sayHello2();
+
+        let sayHello3 = () =>{
+            console.log("hello3");
+        }
+        sayHello3();
+    </script>
+
+    <script>
+        let number = 5;
+        // 매개변수 X, 반환값 X 
+        function aaa(){
+            console.log("aaa");
+        }
+        // 매개변수 X, 반환값 O
+        function bbb(){
+            return "bbb1";
+        }
+        bbb()   //실행하고 난 후에는 return 값이 남는다.
+        console.log(bbb());
+
+        // 매개변수 O, 반환값 X
+        let number1 = 15;
+        let number2 = 13;
+
+        function ccc(num1){
+            console.log(num1)
+        }
+        ccc(3, "hello")
+
+        /// 매개변수 O, 반환값O
+        function ddd(num1){
+            return num1 +100;
+        }
+        console.log(ddd(number1));
+
+
+        let sum =(num1, num2)=>{
+            let num = num1 + num2;
+            let mul = num * 5;
+            return mul;
+        }
+        console.log(sum(number1, number2));
+    </script>
+</body>
+</html>
