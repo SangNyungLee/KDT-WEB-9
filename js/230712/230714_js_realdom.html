@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        .red{
+            background-color: red;
+        }
+        .orange{
+            background-color: orange;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="red" class = "box red"></div>
+    <div id="orange" class = "box orange"></div>
+    <div class = "box yellow"></div>
+    <input type="text" name="id"/>
+    
+
+    <script>
+        let redBoxbyID = document.getElementById("red")
+        console.log(redBoxbyID)
+
+        let boxes = document.getElementsByClassName("box")
+        console.log(boxes)
+
+        let boxesByTag = document.getElementsByTagName("div")
+        console.log(boxesByTag)
+
+        let input = document.getElementsByName("id")
+        console.log(input)
+
+        let boxesBySelector = document.querySelector(".box")
+        console.log(boxesBySelector)
+
+        let boxexBySelectorAll = document.querySelectorAll(".box")
+        console.log(boxexBySelectorAll)
+
+        let orangeBySelectorAll = document.querySelectorAll(".orange")
+        console.log(orangeBySelectorAll)
+    </script>
+    
+</body>
+</html>

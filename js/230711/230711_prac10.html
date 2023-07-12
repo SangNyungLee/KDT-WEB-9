@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습10</title>
+</head>
+<body>  
+    <script>
+        let num = [];
+        for(let i =1; i<=100 ; i++){
+            num.push(i);
+        }
+        let for_num =0;
+        for(let i=0 ; i<100 ; i++){
+            for_num += num[i]; 
+        }
+        console.log(for_num);
+
+        let num2=0;
+        for(let for_num2 of num){
+            num2 += for_num2;
+        }
+        console.log(num2);
+
+        let num3 =0;
+        
+        num.forEach(function(i){
+            num3 += i;
+        })
+        console.log(num3);
+    
+    </script>
+    
+</body>
+</html>

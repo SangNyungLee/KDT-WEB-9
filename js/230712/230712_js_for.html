@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 'Happy day~!';
+        let num = [];
+        console.log(str.length);
+
+        console.log(str.toUpperCase());
+        console.log(str.toLowerCase());
+        
+        // 없으면 -1 반환
+        console.log(str.indexOf('p'));
+        
+        console.log(str.slice(2, 7));
+
+        console.log(str.repeat(3));
+
+        console.log(str.trim())
+
+        console.log(str.split(""));
+        console.log(str.split(" "));
+
+        let hello = "Hello~";
+       const helloArr = hello.split("").reverse().join("");
+        console.log(helloArr);
+
+        let hello2 = hello.split("").reverse().join("")
+        console.log(hello2)
+
+        let helloArr2 = hello.split("").reverse();
+        
+        helloArr2.push('push');
+        console.log(helloArr2);
+        console.log(helloArr2[5])
+        console.log(typeof(helloArr2))
+
+
+    </script>
+    
+</body>
+</html>

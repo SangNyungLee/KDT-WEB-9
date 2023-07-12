@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let now = new Date()        // 2023-07-12일(수) 기준
+        let expired = new Date('2023-06-07')
+        console.log(now)
+        console.log(expired)
+        console.log(now.getFullYear())  // 2023
+
+        console.log(now.getMonth()+1)     // 7
+        //*주의 : getMonth는 실제 월 -1 됨
+        
+        console.log(now.getDate())  //12
+
+        console.log(now.getDay())    // 3(수) => 요일을 숫자로
+        // 1(월) ~ 
+
+        console.log(now.getTime() >= expired.getTime()) //true (만료일 지남)
+
+        console.log(now.getMinutes())
+
+        
+
+        let year = now.getFullYear()
+        let Month = now.getMonth()
+        let date = now.getDate()
+        
+        // console.log(`${year}-${Month >= 10 ? month : "0" +month}-${date <= 10 ? date : "0" + date}`);
+        console.log(Math.PI)
+        console.log(Math.E)
+        console.log(Math.min(2,5,8))
+        console.log(Math.max(2,5,8))
+        console.log(Math.random())      // 0~1 사이의 실수
+        console.log(Math.round(7.5), Math.round(7.4))    //  8  7
+        console.log(Math.floor(7.4), Math.floor(7.9))    //  7  7
+        console.log(Math.ceil(7.9), Math.ceil(7.4))
+
+        //Math.round(Math.random() * (최댓값-최솟값) + 최솟값)
+        console.log(Math.floor(Math.random() * (100 - 1) + 1))
+        console.log(Math.round(Math.random() * (51-50)+50))
+    </script>
+</body>
+</html>
