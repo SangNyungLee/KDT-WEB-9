@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습10</title>
+    <script>
+
+        
+        function calculate(){
+        let num1 = Number(document.getElementById("number_1").value)
+        let num2 = Number(document.getElementById("number_2").value)
+        let op = document.getElementById("op").value
+        let result = 0;
+
+        switch(op){
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                result = num1 / num2;
+                break;
+            }
+
+            document.getElementById("result").value = result;
+        }
+    </script>
+</head>
+<body>
+    <div>값1: 
+        <input type="text" id ="number_1" />
+    </div>
+
+    <div>값2: 
+        <input type="text" id ="number_2"/>
+    </div>
+
+    <div>연산자 
+        <input type="text" id ="op"/>
+    </div>
+
+    <div>결과: 
+        <input type="text" id ="result"/>
+    </div>
+
+    <br />
+    <div>
+        <button type="button" onclick="calculate()">계산하기</button>
+        <button type="button" onclick="">초기화</button>
+    </div>
+
+
+</body>
+</html>

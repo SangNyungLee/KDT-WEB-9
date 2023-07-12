@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습2 방명록</title>
+    <style>
+        table{
+            text-align: center;
+            width: 100%;
+            border: 1px solid;
+            
+        }
+        th, td{
+            border: 1px solid;
+        }
+    </style>
+        <script>
+
+            // let year = now.getFullYear()
+            // let Month = now.getMonth()
+            // let date = now.getDate()
+
+            function calcul(){
+                let name_1 = document.getElementById("name").value
+                let write_1 = document.getElementById("write").value
+                console.log(name_1)
+                console.log(write_1)
+                document.getElementById("name").value = td_2
+                document.getElementById("write").value = td_3
+                console.log(td_2)
+                console.log(td_3)
+                let createTable = document.createElement('td_')
+                createTable.append(name_1)
+                createTable.append(write_1)
+                
+            }
+        </script>
+</head>
+<body>
+    <div>
+        작성자 <input type="text" id="name"/>
+    </div>
+    <div>
+        내용 <input type="text" style="width: 90%;" id="write"/>
+    </div>
+    <br />
+    <button type="button" onclick="calcul()">작성</button>
+    
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성일</th>
+        </tr>
+        <tr id="tr_">
+            <td id ="td_1"></td>
+            <td id = "td_2"></td>
+            <td id="td_3"></td>
+            <td id="td_4"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
