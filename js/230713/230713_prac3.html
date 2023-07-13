@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+
+    <style>
+        .table{
+            width: 100%;
+            border: 1;
+        }
+        .h1{
+            
+        }
+        td{
+            cursor: pointer;
+        }
+    </style>
+        <script>
+        
+        function getinput(){
+            var tr_value = $("button").val();
+            console.log(tr_value);
+        }
+        function date_add(){
+            var date_value = $("input").val();
+        }
+        </script>
+</head>
+<body>
+    <div>
+        <input type="text" class="date"/>
+    </div>
+
+    <div>
+        <input type="text" class="comment"/>
+    </div>
+
+    <div>
+        <button type="button">작성</button>
+    </div>
+    
+
+    <h2>2023년 7월</h2>
+    <table border="1" cellspacing="1">
+        <tr>
+            <td style="color: red;">일</td>
+            <td id="">월</td>
+            <td>화</td>
+            <td>수</td>
+            <td>목</td>
+            <td>금</td>
+            <td style="color: blue;">토</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="color: blue;" id="1">1</td>
+        </tr>
+        <tr>
+            <td style="color: red;" id="2">2</td>
+            <td id="3">3</td>
+            <td id="4">4</td>
+            <td id="5">5</td>
+            <td id="6">6</td>
+            <td id="7">7</td>
+            <td style="color: blue;" id="8">8</td>
+        </tr>
+        <tr>
+            <td style="color: red;" id="9">9</td>
+            <td id="10">10</td>
+            <td id="11">11</td>
+            <td id="12">12</td>
+            <td id="13">13</td>
+            <td id="14">14</td>
+            <td style="color: blue;" id="15">15</td>
+        </tr>
+        <tr>
+            <td style="color: red;" id="16">16</td>
+            <td id="17">17</td>
+            <td id="18">18</td>
+            <td id="19">19</td>
+            <td id="20">20</td>
+            <td id="21">21</td>
+            <td style="color: blue;" id="22">22</td>
+        </tr>
+        <tr>
+            <td style="color: red;" id="23">23</td>
+            <td id="24">24</td>
+            <td id="25">25</td>
+            <td id="26">26</td>
+            <td id="27">27</td>
+            <td id="28">28</td>
+            <td style="color: blue;" id="29">29</td>
+        </tr>
+        <tr>
+            <td style="color: red;"  id="30">30</td>
+            <td id="31">31</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="color: blue;"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

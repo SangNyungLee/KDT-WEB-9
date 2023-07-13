@@ -10,6 +10,7 @@
         .box{
             width: 100px;
             height: 100px;
+            cursor: pointer;
         }
         .red{
             background-color: red;
@@ -35,20 +36,26 @@
     </style>
 </head>
 <body>        
-    <div class="box red"></div>
-    <button type="button" onclick="switchColor()">바껴라</button>
+    <div class="box red" onclick="switchColor()"></div>
 
     <script>
         var arr = ["red", "orange", "yellow", "green", "blue", "indigo", "purple", "red"];
         var i = 0;
         function switchColor(){
             
-            $(".box").switchClass(arr[i], arr[i+1], 1000)
+            $(".box").switchClass(arr[i], arr[i+1], 500)
             i++;
             if(i>6){
                 i =0;
             }
 
+            // function switchColor(){
+            //     if($(".box").hasClass("red")){
+            //         $(".box").switchClass("red", "orange", 500)
+            //     } else if($(".box").hasClass("orange")){
+            //         $(".box").switchClass("orange", "yellow", 500)
+            //     }
+            // }
         }
     </script>
 
