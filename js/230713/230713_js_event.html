@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <!-- <div onclick=""></div> -->
+    <button type="button">버튼</button>
+    <button type="button" id="button2">버튼2</button>
+    <button type="button" id="button3">마우스다운</button>
+    <button type="button" id="button4">마우스업</button>
+    <input type="text" name="id" placeholder="id를 입력해주세요."/>
+    <input type="password" name="password"/>
+
+    <script>
+
+
+        //요소.document.createElement("button")
+        let button = document.querySelector("button");
+        let button2 = document.getElementById("button2")
+        let button3 = document.getElementById("button3")
+        let button4 = document.getElementById("button4")
+
+        // 요소.addEveentListener(인자 2개 click, function())
+        button2.addEventListener("click", function(){
+            alert("클릭!")
+        })
+        button3.addEventListener("mousedown", function(){
+            alert("마우스다운!")
+        })
+        button4.addEventListener("mouseup", function(){
+            alert("마우스업!")
+        })
+        button.addEventListener("mouseover", function(){
+            alert("클릭!!")
+        })
+
+
+        let input = document.querySelectorAll("input")
+        for(let i=0; i<input.length ; i++){
+            input[i].addEventListener("focus", (e) =>{
+                e.currentTarget.style.backgroundColor = "black";
+            })
+            input[i].addEventListener("blur", (e) => {
+                e.currentTarget.style.backgroundColor = "initial";
+            })
+        }
+
+        // input.addEventListener("focus", (target) =>{
+        //     input.style.backgroundColor = "black";
+        //     input.style.color = "white";
+        //     // console.log(target.currentTarget)
+        //     //매개변수는 input.addeventlistener을 가지고 있는데
+        //     //매개변수.currenttarger라고 치면 event의 정보를 가져온다.
+        // })
+        // input.addEventListener("blur", function(){
+        //     input.style.backgroundColor = "yellow"
+        // })
+
+
+    </script>
+</body>
+</html>

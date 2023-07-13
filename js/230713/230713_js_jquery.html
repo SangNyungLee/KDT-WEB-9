@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <style>
+
+        div{
+            width: 100px;
+            height: 100px;
+            /* background-color: red; */
+            /* transition: 1s; */
+
+        }
+        .red{
+            background-color: red;
+        }
+        .orange{
+            background-color: orange;
+        }
+    </style>
+
+</head>
+<body>
+    <input type="text" name="id" id="id" />
+    <button onclick="submitt()">바껴라</button>
+    <button onclick="btn2()">사라져라</button>
+
+    <div></div>
+    <div></div>
+
+    <div class="container">
+        <div class="red"></div>
+        <div class="orange"></div>
+        <div class="red"></div>
+    </div>
+    
+    <button onclick="fn3()">요소 탐색</button>
+    <script>
+        function fn3(){
+            // console.log($(".container").children().removeClass("red"))
+            console.log($(".orange").parent())
+            console.log($(".orange").parents(".container"))
+            console.log($(".orange").next())
+            console.log($(".orange").prev())
+            console.log($(".red").nextAll())
+            console.log($(".red").prevAll(".orange"))
+        }
+
+        // $("input").val("aaaa")   // 모든 input에 value "aaaa" 집어넣는다.
+        
+        function submitt(){
+
+            // let valueJQuery = $("#id").val()     //Jquery
+            // let valueJs = document.getElementById("id").value    //바닐라 js
+            
+
+            // document.getElementById("id").value = "aaa";     //바닐라 js
+            // $("#id").val("aaa");        //jquery
+            // $("div").css("background-color", "blue")
+            $("div").css("border-radius", "50%")
+
+            // attribute 함수 = 요소의 속성에 접근할 수 있게 해준다.
+            $("input").attr("placeholder", "아이디를 입력하세요.")
+
+            // text 함수, innerText
+            // $("div").text("안녕?")          //안녕
+            // $("div").text("<p>Hi</p>")      //<p>Hi</p> 그대로 나옴
+
+            // html 함수, innerHtml
+            // $("div").html("<p>Hi</p>")
+
+            // append 함수
+            // let h1 = document.createElement("h1")
+            // h1.innerText = "안녕?"
+            // document.querySelector.append(h1)
+            // 얘(자바스크립트)가 한줄로 표현가능
+            $("div").append('<h1>안녕</h1>')    //태그를 파싱한다.
+            
+            // prepend 함수 : 선택된 요소의 자식 요소 중 첫번쨰로 추가
+            
+            $("div").prepend("<h1>prepend</h1>")
+
+            // before 함수
+            $("div").before("<h1>before</h1>")
+
+            // after 함수
+            $("div").after("<h1>after</h1>")
+
+            // remove 함수
+            // $("div").remove()
+
+            //empty 함수
+            // $("div").empty()
+
+
+            // add 클래스 함수 : 요소가 여러개 있어도 다 적용해줌
+            $("div").addClass("red")
+
+            
+        }
+
+        function btn2(){
+
+            // removeClass 함수
+            // $("div").removeClass()
+            // $("div").removeClass("red")
+
+            // hasClass 함수
+            console.log($("div").hasClass("red"))
+
+            //toggleClasas 함수
+            $("div").toggleClass("red")
+        }
+        
+    </script>
+</body>
+</html>

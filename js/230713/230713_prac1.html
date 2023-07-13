@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습1</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <img id = "imgID" class="imgClass" src="../../image/cat.jpg"/>
+    <button type="button" class="apple" onclick="changeIMG()">사과</button>
+    <button type="button" class="banana" onclick="changeIMG()">바나나</button>
+    <button type="button" class="grape" onclick="changeIMG()">포도</button>
+    <button type="button" class="peach" onclick="changeIMG()">복숭아</button>
+    </div>
+
+    
+    <script>
+        // function changeIMG1(){
+        //     $("#imgID").attr("src", "../../image/사과.jpg");
+        // }
+        // function changeIMG2(){
+        //     $("#imgID").attr("src", "../../image/바나나.jpg");
+        // }
+        // function changeIMG3(){
+        //     $("#imgID").attr("src", "../../image/포도.jpg");
+        // }
+        // function changeIMG4(){
+        //     $("#imgID").attr("src", "../../image/복숭아.jpg");
+        // }
+        
+           // $("img").attr("id") == -> 태그 부르고 -> 아이디 순서
+
+        function changeIMG(){
+            if($("button").attr("class") == "apple"){
+            $(".imgClass").attr("src", "../../image/사과.jpg");
+
+            } else if($("button").attr("class") == "banana"){
+            $(".imgClass").attr("src", "../../image/바나나.jpg");
+
+            } else if($("button") == $(".grape")){
+            $(".imgClass").attr("src", "../../image/포도.jpg");
+
+            }else {
+            $(".imgClass").attr("src", "../../image/복숭아.jpg");
+            }
+        }
+        console.log(changeIMG())
+            // // hasClass 함수
+            // console.log($("div").hasClass("red"))
+
+    </script>
+</body>
+</html>

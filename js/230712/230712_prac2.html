@@ -1,66 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>실습2 방명록</title>
-    <style>
-        table{
-            text-align: center;
-            width: 100%;
-            border: 1px solid;
-            
-        }
-        th, td{
-            border: 1px solid;
-        }
-    </style>
-        <script>
-
-            // let year = now.getFullYear()
-            // let Month = now.getMonth()
-            // let date = now.getDate()
-
-            function calcul(){
-                let name_1 = document.getElementById("name").value
-                let write_1 = document.getElementById("write").value
-                console.log(name_1)
-                console.log(write_1)
-                document.getElementById("name").value = td_2
-                document.getElementById("write").value = td_3
-                console.log(td_2)
-                console.log(td_3)
-                let createTable = document.createElement('td_')
-                createTable.append(name_1)
-                createTable.append(write_1)
-                
-            }
-        </script>
+    <title>Document</title>
 </head>
 <body>
     <div>
-        작성자 <input type="text" id="name"/>
+        작성자 : 
+        <input type="text" name="name" id="writer" />
     </div>
     <div>
-        내용 <input type="text" style="width: 90%;" id="write"/>
+        내용 : 
+        <input type="text" name="comment" id="comment" />
     </div>
-    <br />
-    <button type="button" onclick="calcul()">작성</button>
+
+    <button type="button" onclick="addRow()">작성</button>
     
-    <table>
+    <table border="1" cellspacing="0">
         <tr>
             <th>번호</th>
             <th>작성자</th>
             <th>내용</th>
             <th>작성일</th>
         </tr>
-        <tr id="tr_">
-            <td id ="td_1"></td>
-            <td id = "td_2"></td>
-            <td id="td_3"></td>
-            <td id="td_4"></td>
-        </tr>
     </table>
 
+
+    <script>
+        let num = 1;
+        
+        function addRow() {
+            let table = document.querySelector("table")
+            // tr 태그 생성 tr
+            let tr = document.createElement("tr")
+
+            
+            // 번호 td  numtd
+            let numTd = document.createElement("td")
+            numTd.innerText = num;
+
+            // 작성자 td    writertd
+            let writerTd = document.createElement("td")
+            let writer = document.getElementById("writer").value
+            writerTd.innerText = writer;
+
+            // 내용 td!     commenttd
+            let commentTd = document.createElement("td")
+            let comment = document.getElementById("comment").value
+            commentTd.innerText = comment;
+
+            // 작성일 td    datetd
+            let dateTd = document.createElement("td")
+            let date = new Date()
+            let dateStr = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+            dateTd.innerText = dateStr;
+
+
+            // tr의 자식으로 td 태그 추가하기
+            tr.appendChild(numTd)
+            tr.appendChild(writerTd)
+            tr.appendChild(commentTd)
+            tr.appendChild(dateTd)
+
+            table.appendChild(tr)
+            num++;
+            
+
+
+        }
+    </script>
 </body>
 </html>

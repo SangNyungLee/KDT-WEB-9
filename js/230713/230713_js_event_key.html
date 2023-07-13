@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event_key</title>
+    <script>
+        window.addEventListener("load", function(){
+            let div = document.querySelector("div")
+            div.style.marginLeft = "100px"
+        })
+    </script>
+</head>
+<body>
+    <input type="password" name="pw" id="pw" placeholder="비번입력"/>
+    <input type="password" name="pw" id="pw_check" placeholder="비번입력"/>
+    <div style="width: 100px; height: 100px; background-color: red; transition: 3s;"></div>
+    <script>
+        let input = document.getElementById("pw")
+        input.addEventListener("keyup", function(e){
+            if(e.key == "Enter"){
+                alert("로그인")
+            }
+            // console.log(e.key)
+        })
+
+        // window.addEventListener("load", function(){
+        //     let div = document.querySelector("div");
+        //     div.style.marginLeft = "100px"
+        //     // 다 만들어지고 얘가 옮겨지고 싶을 때 사용
+        // })
+        
+        window.addEventListener("resize", function(){
+            console.log(window.innerWidth)
+        })
+
+        document.getElementById("pw_check").addEventListener("change", (e) =>{
+            if(input.value == e.currentTarget.value){
+                alert("같다")
+            } else{
+                alert("다르다")
+            }
+        })
+    </script>
+    
+</body>
+</html>
