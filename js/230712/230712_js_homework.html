@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+</head>
+<body>
+    <div>
+        작성자 : 
+        <input type="text" name="name" id="writer" />
+    </div>
+    <div>
+        내용 : 
+        <input type="text" name="comment" id="comment" />
+    </div>
+
+    <button type="button" onclick="book()">작성</button>
+    
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>번호</th>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성일</th>
+        </tr>
+    </table>
+
+    <script>
+        let num = 1;    // 번호에 넣을 숫자 1부터 시작
+        
+        function book(){
+            // table 태그 생성
+            let table = document.querySelector("table")
+            // tr태그 생성
+            let tr = document.createElement("tr")
+            // 작성자td
+            let WriterTd = document.createElement("td")
+            let writer = document.getElementById("writer").value
+            WriterTd.innerText = writer;
+            // 번호td
+            let numTd = document.createElement("td")
+            numTd.innerText = num;
+
+            // 내용td
+            let commentTd = document.createElement("td")
+            let comment = document.getElementById("comment").value
+            commentTd.innerText = comment;
+
+            //작성일 td
+            let dateTd = document.createElement("td")
+            let date = new Date()
+            let dateStr = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+            dateTd.innerText = dateStr;
+
+            //tr자식으로 td 추가
+            tr.appendChild(numTd)
+            tr.appendChild(WriterTd)
+            tr.appendChild(commentTd)
+            tr.appendChild(dateTd)
+
+            table.appendChild(tr)
+            num++;
+            document.getElementById("writer").value = ''
+            document.getElementById("comment").value = ''
+        }
+    </script>
+</body>
+</html>

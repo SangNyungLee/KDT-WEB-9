@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,47 +8,96 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
 
     <style>
-        .table{
-            width: 100%;
-            border: 1;
-        }
-        .h1{
-            
-        }
-        td{
-            cursor: pointer;
-        }
-    </style>
-        <script>
         
-        function getinput(){
-            var tr_value = $("button").val();
-            console.log(tr_value);
+        body{
+            height: 700px;
         }
-        function date_add(){
-            var date_value = $("input").val();
+        table{
+            width: 700px;
+            height: 600px;
+            table-layout: fixed;
         }
-        </script>
+        th,td{
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+            }
+        h2{
+            text-align: center;
+        }
+
+    </style>
+   
+   <script>
+    // function date_click(e){
+    //     console.log(e.innerText)    //jquery 찾아보기
+    //     $(".date").val(e);
+        
+    // }
+    // $("td").click(function(){
+    //     // console.log();
+    //     alert("안녕하세요");
+    //     // $(".date").val();
+
+    // })
+// $(function(){
+//     $("#table_id").on("click", "td", function () {
+//         console.log($(this).text());
+//         $(".date").val($(this).text());
+//     });
+
+//     $("#btn").on("click",function(){
+//         console.log("클릭됨");
+//         let a = $(".comment").val();
+
+//     })
+
+// })
+let hi = "";
+$(function(){
+    $("td").on("click", function () {
+        console.log($(this).text());
+        $(".date").val($(this).text());
+
+         hi = $(this).text();
+    });
+
+    $("#btn").on("click",function(){
+        console.log("클릭됨");
+        let a = $(".comment").val();
+        // console.log("hi ::: " + hi);
+        // console.log(a)
+        $("#"+hi).append("<br/>"+ a);
+    })
+    })
+
+
+
+    </script>
+
 </head>
 <body>
     <div>
-        <input type="text" class="date"/>
+       날짜: <input type="text" class="date" />
     </div>
 
     <div>
-        <input type="text" class="comment"/>
+       내용: <input type="text" class="comment"/>
     </div>
 
     <div>
-        <button type="button">작성</button>
+        <button type="button" id="btn">작성</button>
     </div>
     
 
-    <h2>2023년 7월</h2>
-    <table border="1" cellspacing="1">
-        <tr>
+
+    <table id="table_id">
+        <h2>2023년 7월</h2>
+        <tr class="classTr">
             <td style="color: red;">일</td>
-            <td id="">월</td>
+            <td>월</td>
             <td>화</td>
             <td>수</td>
             <td>목</td>
@@ -110,6 +159,7 @@
             <td style="color: blue;"></td>
         </tr>
     </table>
+
 
 </body>
 </html>
