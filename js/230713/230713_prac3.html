@@ -55,21 +55,21 @@
 //     })
 
 // })
-let hi = "";
+let num;
 $(function(){
     $("td").on("click", function () {
         console.log($(this).text());
         $(".date").val($(this).text());
 
-         hi = $(this).text();
+         num = $(this).text();
     });
 
     $("#btn").on("click",function(){
-        console.log("클릭됨");
+        // console.log("클릭됨");
         let a = $(".comment").val();
         // console.log("hi ::: " + hi);
         // console.log(a)
-        $("#"+hi).append("<br/>"+ a);
+        $("#"+num).append("<br/>"+ a);
     })
     })
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습2</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .box{
+            background-color: black;
+        }
+        
+        @media screen and (min-width : 700px){
+            div{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        @media screen and (min-width : 700px){
+            div{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 400px; height: 400px;">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    </div>
+</body>
+</html>

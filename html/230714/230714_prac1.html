@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>실습1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+    </style>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="bi bi-cup-hot"></i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">COFFEE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">MENU</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">STORE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">RESPONSIBILITY</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">STARBUCKS REWARDS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">CORPORATE SALES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">WHAT'S NEW</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  더보기
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li> -->
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../../image/image.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="../../image/image (1).png" class="d-block w-100" alt="...">
+          </div>
+          <!-- <div class="carousel-item">
+            <img src="../../image/reserve_visual_m.jpg" class="d-block w-100" alt="...">
+          </div> -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="container text-center" style="width: 100%;">
+        <div class="row">
+          <div class="col" style="background-color: black; width: 100px; color: white; display: flex; justify-content: space-between;">
+            공지사항
+            <i class="bi bi-plus-circle"></i>
+          </div>
+          <div class="col" style="background-color: white;">
+            프로모션
+            <i class="bi bi-arrow-down-circle-fill"></i>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between;" >
+      <div class="card" style="width: 18rem;">
+        <img src="../../image/콘파나.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">아메리카노 콘파나</h5>
+          <p class="card-text">맛있어요!</p>
+          <a href="#" class="btn btn-primary">구경하러가기</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="../../image/마키아또.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">마키아또</h5>
+          <p class="card-text">이것도 맛있어요</p>
+          <a href="#" class="btn btn-primary">구경하러가기</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="../../image/아메리카노.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">아메리카노</h5>
+          <p class="card-text">아메리카노 입니다.</p>
+          <a href="#" class="btn btn-primary">구경하러가기</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="../../image/아메리카노2.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">아메리카노2</h5>
+          <p class="card-text">얘도 아메리카노 입니다.</p>
+          <a href="#" class="btn btn-primary">구경하러가기</a>
+        </div>
+      </div>
+      </div>
+      <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.
+        </div>
+      </div>
+      <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">팝오버클릭</button>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
