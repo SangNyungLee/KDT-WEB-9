@@ -26,13 +26,11 @@ body{
 .box_1{
     background-color: #F94144;
     /* grid-column: 1 / 7; */
-    /* order: 0; */
-    grid-area: header;
+        grid-area: header;
 }
 .box_2{
     background-color: #F3722c;
     /* grid-row: 2 / 4; */
-    /* order: 1; */
     grid-area: side1;
 }
 .box_3{
