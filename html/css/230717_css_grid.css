@@ -1,0 +1,92 @@
+.container{
+    display: grid;
+    height: 500px;
+    /* grid-template-columns: repeat(3, 100px); */
+    /* grid-template-rows: repeat(3,200px); */
+    grid-template-columns: repeat(3, 200px);
+    /* minmax(최소, 최대) */
+    /* grid-template-columns: repeat(3, minmax(100px, auto)); */
+    grid-template-rows: repeat(3, 200px);
+    /* row-gap: 20px; */
+    /* column-gap: 20px; */
+    /* gap: 20px 10px; */
+    /* justify-items: center; */
+    /* align-items: center; */
+    /* place-items: center end; */
+    /*  justify-items : 존재하는 영역 내에서 가운데 정렬을 해준다
+        align-items : 존재하는 영역 내에서 세로 가운데 정렬을 해준다.
+        place-items : 존재하는 영역 내에서 정렬을 해줌(column -> row 순서, center, end 하면
+        가운데, 오른쪽 정렬함
+    */
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* place-content: end end; */
+    /*
+    justify-content : grid 통째로 가로 가운데 정렬을 함
+    align-content : 부모를 통째로 세로 가운데 정렬
+    place-content : 가로, 세로 정렬 ex) place-content : center, center;
+    */
+    
+    grid-template-areas: 
+    'header header header'
+    'nav main aside'
+    'footer footer footer';
+}
+
+.item{
+    width: 100px;
+    height: 100px;
+}
+
+.red{
+    grid-area: header;
+    background-color: red;
+    /* grid-column: 1 / 4; */
+    /* grid-column: 1 / span 3; */
+    /* grid-column: auto / span 3; */
+    /* grid-column-start: 1; */
+    /* grid-column-end: 4; */
+    /*grid-row : start-end*/
+    /* grid-row: 2 / 4; */
+    /* place-self: center;
+    order: 1; */
+}
+
+.orange{
+    grid-area: nav;
+    background-color: orange;
+    /* grid-row: auto / span 2; */
+    /* place-self: center; */
+    /* order: 2; */
+}
+
+.yellow{
+    grid-area: main;
+    background-color: yellow;
+    /* justify-self: center; */
+    /* align-self: center; */
+    /* order: 0; */
+    /* place-self: center;(행/렬 순서 같으면 하나로 적어도 됨) */
+
+}
+
+.green{
+    grid-area: aside;
+    background-color: green;
+}
+
+.blue{
+    grid-area: footer;
+    background-color: blue;
+    /* width: 500px;
+    z-index: -1; */
+}
+/*
+.navy{
+    background-color: aqua;
+}
+.purple{
+    background-color: purple;
+     order: -1; 
+}
+*/

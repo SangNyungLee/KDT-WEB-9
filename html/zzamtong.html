@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
-    <title>실습3_1</title>
+    
     <style>
-        td{
-            width: 200px;
-            height: 100px;
-            color: black;
-            vertical-align: top;
+        td {
+          width: 200px;
+          height: 100px;
+          color: black;
+          vertical-align: top;
         }
         tr > td:first-child > p,
-        tr > th:first-child{
-            color:red;
+        tr > th:first-child {
+          color: red;
         }
-
         tr > td:last-child > p,
-        tr > th:last-child{
-            color:blue;
+        tr > th:last-child {
+          color: blue;
         }
-        td > p:hover{
-            transform: scale(1.2);  /*글자를 1.2배 정도 키움*/
-            cursor: pointer;        /* 커서 올리면 바뀜*/
+        td > p:hover {
+          transform: scale(1.2);
+          cursor: pointer;
         }
-
-    </style>
+      </style>
 </head>
 <body>
-    <div>
+      <div>
         날짜 : <input type="text" id="date" readonly /> <br />
         내용 : <input type="text" id="content" /> <br />
         <button type="button">작성</button> <br />
@@ -107,24 +106,25 @@
           <td><p></p></td>
         </tr>
       </table>
-      <script>
-        let e=null;
-        $("p").on("click", function(){
-            console.log(this)
-            // console.log(e.currentTarget)
-            td = this;
-            // 1. 클릭한 요소의 날짜
-            let date = $(this).text()
-            // 2. input#date 선택해서 1번에 값 넣기
-            $("#date").val(date);
+
+    <script>
+        let td = null;
+        $("td > p").on("click", function(e){
+          // console.log(this)
+          // console.log(e.currentTarget)
+          td = this
+
+          // 1. 클릭한 요소의 날짜
+          let date = $(this).text()
+          // 2. input#date 선택해서 1번 값 넣기
+          $("#date").val(date)
         })
 
-        $("button").on("click", function(){
-            let content =$('#content').val()
-            // 내용(input)의 value 값을 content 변수에 넣어줌
-            $(e).parent().append(`<div>${content}</div>`)
-            // p의 부모에 접근해서 append 한다.          
+        $("button").on("click", function() {
+          let content = $("#content").val()
+          $(td).parent().append(`<div>${content}</div>`)
+          // console.log(td)
         })
-      </script>
+    </script>
 </body>
 </html>
