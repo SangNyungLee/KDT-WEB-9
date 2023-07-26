@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- <button type="button">버튼 클릭</button> -->
+    <!-- <div style="height: 10000px;">작은거</div> -->
+    <input type="text"/>
+    <script>
+        // $("button").on("hover", function(){
+        //     alert("호버!")
+        // })
+
+        // $("div").hover(function(){
+        //     $("div").text("호버중");
+        // }, function(){
+        //     $("div").text("호버끝")
+        // });
+
+        $("input").keyup(function(){
+            console.log("키업");
+        });
+        $("input").keydown(function(){
+            console.log("키다운");
+        });
+
+    </script>
+
+</body>
+</html>
