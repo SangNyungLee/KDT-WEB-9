@@ -2,15 +2,23 @@
   "name": "nodejs",
   "version": "1.0.0",
   "description": "",
+<<<<<<< Updated upstream
   "main": "230727_nodsJs.js",
+=======
+  "main": "index.js",
+>>>>>>> Stashed changes
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< Updated upstream
     "ejs": "^3.1.9",
     "expres": "^0.0.5",
     "express": "^4.18.2"
+=======
+    "module": "^1.2.5"
+>>>>>>> Stashed changes
   }
 }
