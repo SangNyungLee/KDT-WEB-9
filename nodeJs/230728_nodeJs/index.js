@@ -22,15 +22,16 @@ app.get('/', (req, res) =>{
 // localhost:8000/kdt0 으로 들어가면 hello kdt9 라는 문구가 보이게 된다.
 app.get('/kdt9', (req, res) =>{
     // res.send("Hello kdt9");
-
     res.render('prac1', {number:[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}); 
     // 랜더링 메세지를 보내면서 데이터까지 보내줄 수 있다.
 })
 app.get('/test', (req, res) =>{
-    // res.send("Hello kdt9");
 
     res.render('test', {name:["apple", "banana", "grape", "peach"]}); 
     // 랜더링 메세지를 보내면서 데이터까지 보내줄 수 있다.
+})
+app.get('/prac2', (req, res) =>{
+    res.render('prac2', {tag : "./test.ejs"}); 
 })
 
 
