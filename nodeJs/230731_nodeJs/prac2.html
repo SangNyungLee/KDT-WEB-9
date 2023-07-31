@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function call(){
+            return new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    console.log('kim');
+                    resolve('kim');
+                }, 1000);
+            })
+        }
+        function back(){
+            return new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    console.log('back');
+                    resolve('back');
+                }, 1000);
+            })
+        }
+        function hell(){
+            return new Promise(function(resolve, reject){
+                setTimeout(function(){
+                    resolve('callback hell');
+                }, 1000);
+            })
+        }
+
+
+        /*
+        call('kim').then(function(name){
+            console.log(name + " 반가워");
+            return back();
+        }).then(function(txt){
+            console.log(txt + "을 실행했구나");
+            return hell();
+        }).then(function(message){
+            console.log("여기는 " + message);
+        });
+        */
+
+        async function exec(){
+            let name = await call();
+            console.log(name + "반가워");
+            let txt = await back();
+            console.log(txt + '을 실행했구나');
+            let res = await hell();
+            console.log(`여기는 ${res}`);
+        }
+        exec();
+
+
+    </script>
+</body>
+</html>

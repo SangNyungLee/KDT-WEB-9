@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열 구조 분해
+        const lists = ['apple', 'grape'];
+        // 기존방식
+        console.log(lists[0], lists[1]);
+        // 구조분해방식
+        // [변수] = 배열
+        [item1, item2, item3 = 'peach'] = lists ;
+        console.log("item1 : ", item1);
+        console.log("item2 : ", item2);
+        console.log('item3: ', item3);
+
+        item1 = 'peach';
+        console.log('item1: ', item1);
+        console.log(item1);
+
+        //교환
+
+        /*
+        const x = 1, y=3; // const가 아니라 let 이었으면 결과 바뀌어서 나옴
+        [x,y] = [y, x];
+        console.log(x, y);
+        */
+
+        const Person ={
+            //key : value
+            name: 'martin',
+            age:19,
+            gender:'M',
+            friends:['Alex', 'Kevin'],
+            hello:function(){
+                console.log('hello');
+            },
+            'kdt-9' : 'codingon 9기'
+        };
+        console.log(Person.name, Person.age);
+        Person.age = 29;
+        console.log(Person.age);
+        console.log(Person.friends[0]);
+        console.log(Person.hello);
+        console.log(Person['name']); 
+        console.log(Person['kdt-9']);
+        // 언제쓰냐? "kdt-9" : 'condingon 9기'
+        // console.log(Person.kdt-9) -> 이거 안댐
+        // console.log(Person['kdt-9']); 이런식으로 불러야댐
+
+        Person['city'] = 'Seoul';
+        Person.city = 'Incheon';
+        console.log(Person);
+
+        //객체 구조분해
+        // console.log(name, city, gender); 얘는 오류남
+        const {name, city, gender} = Person
+        console.log(name, city, gender);
+
+        const{key = 'Hi', age: myAge} = Person
+        // console.log(key,age); -> 얘 안댐 변수명이 바껴서
+        console.log(key,myAge);
+
+
+        
+    </script>
+</body>
+</html>
