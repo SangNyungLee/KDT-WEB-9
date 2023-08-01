@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원가입이 완료되었습니다.</h1>
+    <!-- index.js에서 userInfo객체로 보내줬기 때문에 
+    객체.id 로 아이디 값을 불러온다. -->
+        <div>이름: <span><%= userInfo.id %></span></div>
+        <div>성별: <span><%= userInfo.gender %></span></div>
+        <div>생년월일: <span><%= userInfo.year %>년 <%= userInfo.month %>월 <%= userInfo.day %>일</span></div>
+        <div>관심사 : <span><%= userInfo.hobby %></span></div>
+
+    <br/>
+    <br/>
+    <a href="/">홈으로 이동~~</a>
+</body>
+</html>

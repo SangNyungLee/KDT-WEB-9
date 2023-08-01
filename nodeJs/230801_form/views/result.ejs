@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            color: violet;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <!-- index.js에서 userInfo객체로 보내줬기 때문에 
+    객체.id 로 아이디 값을 불러온다. -->
+    <div><span><%= userInfo.id %></span>님 환영합니다.</div>
+    <div>비밀번호는 <span><%= userInfo.pw %></span>입니다. ㅋㅋ</div>
+    <br/>
+    <br/>
+    <a href="/">홈으로 이동~~</a>
+</body>
+</html>
