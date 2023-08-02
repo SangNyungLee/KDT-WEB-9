@@ -7,11 +7,11 @@
 </head>
 <body>
     <script>
-        function call(){
+        function call(name){
             return new Promise(function(resolve, reject){
                 setTimeout(function(){
-                    console.log('kim');
-                    resolve('kim');
+                    console.log(name);
+                    resolve(name);
                 }, 1000);
             })
         }
@@ -32,7 +32,7 @@
         }
 
 
-        /*
+        
         call('kim').then(function(name){
             console.log(name + " 반가워");
             return back();
@@ -42,17 +42,17 @@
         }).then(function(message){
             console.log("여기는 " + message);
         });
-        */
+        
 
-        async function exec(){
-            let name = await call();
-            console.log(name + "반가워");
-            let txt = await back();
-            console.log(txt + '을 실행했구나');
-            let res = await hell();
-            console.log(`여기는 ${res}`);
-        }
-        exec();
+        // async function exec(){
+        //     let name = await call();
+        //     console.log(name + "반가워");
+        //     let txt = await back();
+        //     console.log(txt + '을 실행했구나');
+        //     let res = await hell();
+        //     console.log(`여기는 ${res}`);
+        // }
+        // exec();
 
 
     </script>
