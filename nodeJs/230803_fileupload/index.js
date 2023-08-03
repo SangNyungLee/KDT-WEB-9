@@ -38,8 +38,8 @@ const uploadDetail = multer({
             const ext = path.extname(file.originalname);
             console.log('ext', ext);
             // 파일 확장자 뺀 파일명 + 시간추가 + 다시 파일 확장자 붙여주기 
-            // done(null, path.basename(file.originalname, ext) + Date.now() + ext);
-            done(null, req.body.title + ext);
+            done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+            // done(null, req.body.title + ext);
         },
     }),
     limits: {fileSize: 5 * 1024 * 1024},
