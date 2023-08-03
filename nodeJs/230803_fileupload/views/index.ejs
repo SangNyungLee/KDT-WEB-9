@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <h1>FORM 싱글 연습</h1>
+        <!-- upload라는 폴더로 보냄 -->
+        <!-- enctype 속성의 multipart~ 반드시 설정 -->
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="userfile" /><br/>
+            <input type="text" name="title" /><br/>
+            <button type="submit">업로드</button>
+        </form> 
+
+        <h1>FORM 멀티연습(ver1)</h1>
+        <form action="/upload/array" method="post" enctype="multipart/form-data">
+            <!-- multiple 꼭 넣어줘야댐!! -->
+            <input type="file" name="userfiles" multiple /><br/>
+            <input type="text" name="title"><br/>
+            <button type="submit">업로드</button>
+        </form>
+
+        <h1>FORM 멀티 연습(ver2)</h1>
+        <form action="/upload/fields" method="post" enctype="multipart/form-data">
+            <!-- 얘는 multiple 필요없음 -->
+            <input type="file" name="userfile1"><br/>                
+            <input type="text" name="title1"><br/>
+            <input type="file" name="userfile1"><br/>                
+            <input type="text" name="title1"><br/>
+            <button type="submit">업로드</button>
+        </form>
+
+        <h1>동적파일업로드</h1>
+        <input type="file" id="dynamic-file"/> <br/>
+        <input type="text" id="title"/> <br/>
+        <button type="button" onclick="fileupload()">동 적 파 일 업 로 드</button>
+        <br/>
+
+        <div class="result"></div>
+
+        <script>
+            const resultBox = document.querySelector(".result");
+            function fileupload(){
+                const file = document.getElementById('dynamic-file');
+                // console.log(file.files[0]); //그냥 file이랑 files랑 다름
+                const title = document.getElementById('title')
+                
+                const abc = new FormData();
+                // 동적 만들 때 순서 중요하다.!
+                // 폼 데이터 만들 때 파일은 제일 마지막에 전송한다.
+                // 파일이 먼저 나오면 밑에 나오는 애들은 전부 무시한다.
+                // index.js에 req -> file 순서로 읽어야댐
+                abc.append('title', title.value);
+                // console.log('file',file.title)
+                // console.log(title.value)
+                // console.log('file[0]',file.files[0])
+                abc.append('dynamic-file', file.files[0]); //백엔드에서 받는 파일 값
+            
+            axios({
+                //data에 아까 위에서 만든 formData를 전송한다.
+                method: 'POST',
+                url : '/dynamicFile',
+                data: abc,
+                headers: {
+                    'Content-type': 'multipart/form-data'   // FormData 형식에 맞춰서 보내준다.
+                },
+            }).then((res)=>{
+                // console.log('res', res)
+                resultBox.innerHTML = `<div><img src=${res.data.path}></div>`
+            })
+        }
+        </script>
+</body>
+</html>
