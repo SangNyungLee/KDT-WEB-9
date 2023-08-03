@@ -25,9 +25,10 @@
             const data ={
                 username: document.querySelector('#username').value,
                 password: document.querySelector('#password').value,
+                erer : 'qwe',
             }
             console.log(data);
-            axios({
+            axios({     // data 를 보냈다.
                 method:'POST',
                 url:'/resultPost',
                 data

@@ -7,8 +7,8 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 //biew endine
-app.set('view engine','ejs');
-app.set('views', './views');
+app.set('view engine','ejs');   // 앞에오는거 key, 뒤에오는게 값
+app.set('views', './views');    //
 
 //get 실습
 app.get('/', (req, res) =>{
@@ -24,6 +24,7 @@ app.get('/axiosPost', (req, res) =>{
 app.post('/resultPost', (req,res)=>{
     const id = 'kdt9';
     const pw = '1234';
+    console.log(req.body);
     if(id === req.body.username && pw === req.body.password){
         res.send({result:true, userInfo: req.body});
     } else{
