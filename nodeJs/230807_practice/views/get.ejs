@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+ 
+    <title>Document</title>
+</head>
+<body>
+    <form name="register" id="register">
+    이름 <input type="text" name="id">
+    <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="남자" id="male">
+        <label for="male">남자</label>
+        <input type="radio" name="gender" value="여자" id="female">
+        <label for="female">여자</label>
+    </fieldset>
+    <fieldset>
+        <legend>생년월일</legend>
+        <select name="year">
+            <%for(let i=1990 ; i<=2023 ; i++){%>
+                <option value="<%=i%>"><%=i%></option>
+            <%}%>
+            년
+        </select>
+        <select name="month">
+            <%for(let i=1 ; i<=12 ; i++){%>
+                <option value="<%=i%>"><%=i%></option>
+            <%}%>
+            월
+
+        </select>
+        <select name="day">
+            <%for(let i=1 ; i<=31 ; i++){%>
+                <option value="<%=i%>"><%=i%></option>
+            <%}%>
+            일
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="hobby" value="여행" id="tr">
+        <label for="tr">여행</label> 
+        <input type="checkbox" name="hobby" value="패션" id="fa">
+        <label for="fa">패션</label> 
+        <input type="checkbox" name="hobby" value="음식" id="fo">
+        <label for="fo">음식</label> 
+    </fieldset>
+    <button type="submit">회원가입</button>
+    </form>
+
+    <h1>POST로 입력받기</h1>
+    <form action="/postForm2_result" method="POST">
+        이름 <input type="text" name="id">
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="gender" value="남자" id="male">
+            <label for="male">남자</label>
+            <input type="radio" name="gender" value="여자" id="female">
+            <label for="female">여자</label>
+        </fieldset>
+        <fieldset>
+            <legend>생년월일</legend>
+            <select name="year">
+                <%for(let i=1990 ; i<=2023 ; i++){%>
+                    <option value="<%=i%>"><%=i%></option>
+                <%}%>
+                년
+            </select>
+            <select name="month">
+                <%for(let i=1 ; i<=12 ; i++){%>
+                    <option value="<%=i%>"><%=i%></option>
+                <%}%>
+                월
+    
+            </select>
+            <select name="day">
+                <%for(let i=1 ; i<=31 ; i++){%>
+                    <option value="<%=i%>"><%=i%></option>
+                <%}%>
+                일
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="hobby" value="여행" id="tr2">
+            <label for="tr2">여행</label> 
+            <input type="checkbox" name="hobby" value="패션" id="fa2">
+            <label for="fa2">패션</label> 
+            <input type="checkbox" name="hobby" value="음식" id="fo2">
+            <label for="fo2">음식</label> 
+        </fieldset>
+        <fieldset>
+            <legend>선택</legend>
+            좋아하는 색상<input type="color" name="color">
+            좋아하는 숫자<input type="number" name="number">
+        </fieldset>
+        <button type="button" onclick="getRegister()">회원가입</button>
+        </form>
+        <br/>
+        <br/>
+        <a herf="/">홈으로 이동</a>
+        <br/>
+        <br/>
+        <div class="result"></div>
+
+        <script>
+            const resultBox = document.querySelector('.result');
+            function getRegister(){
+                console.log('get register')
+                const form = document.forms['register'];
+                const formId = document.getElementById('register');
+
+                const hobby = []
+                const checked = formId.querySelectorAll('input[type="checkbox"]:checked');
+                checked.forEach(elem =>{
+                    hobby.push(elem.value);
+                })
+
+                const data={
+                    username: form.name.value,
+                    gender : form.gender.value,
+                    year : form.year.value,
+                    month :form.month.value,
+                    day : form.day.value,
+                    hobby,
+                    
+                };
+                axios.log(data);
+                axios({
+                    method: 'GET',
+                    url: '/resultGet',
+                    params: data,
+                }).then()
+
+            }
+        </script>
+</body>
+</html>
