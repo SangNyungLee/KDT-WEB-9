@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form name="form-register">
+        <label for="userid">ID</label>
+        <input type="text" name="userid" id="a" /><br />
+        <label for="pw">PW</label>
+        <input type="password" name="pw" id="b"/><br />
+        <label for="nickname">Name</label>
+        <input type="text" name="nickname" id="c"/><br />
+        <button type="button" onclick="register()">회원가입</button>
+    </form>
+    <script>
+        function register(){
+            const form = document.forms['form-register']
+            console.log(form)
+            console.log(form.userid)
+            console.log(form.pw)
+            console.log(form.nickname)
+            console.log(form.a)
+            console.log(form.b)
+            console.log(form.c)
+        //     axios({
+        //         method : 'POST',
+        //         url : '/user/signup',
+        //         data:{
+        //             userid : document.forms['form-register'].userid.value,
+        //             pw : document.forms['form-register'].pw.value,
+        //             id : document.forms['form-register'].nickname.value
+        //         }
+        //     })
+        }
+    </script>
+</body>
+</html>
