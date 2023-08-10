@@ -30,3 +30,25 @@ exports.post_signin = (req,res)=>{
         }
     })
 }
+
+//req.body에서 받아옴
+exports.post_profile = (req, res) =>{
+    User.post_profile(req.body, (result)=>{
+        if(result.length > 0){
+            //일반 폼이기 때문에 render가 가능하다.
+            res.render('profile', {data: result[0]})  // 배열로 오는 데이터 0번째
+        }
+    });
+};
+
+exports.edit_profile = (req, res) => {
+    User.edit_profile(req.body, ()=>{
+        res.send({result : true});
+    });
+};
+
+exports.delete_profile = (req, res) =>{
+    User.delete_profile(req.body.id, ()=>{
+        res.send({result : true});
+    });
+};

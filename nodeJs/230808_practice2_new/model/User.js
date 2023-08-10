@@ -1,5 +1,5 @@
 //mysql연결
-const mysql = require('mysql')
+const mysql = require('mysql');
 const conn = mysql.createConnection({
     host:'localhost',
     user:'users',
@@ -13,7 +13,7 @@ conn.connect((err) => {
         return;
     }
     console.log('connect');
-});
+}); 
 
 //
 exports.post_signup =(data,callback) =>{

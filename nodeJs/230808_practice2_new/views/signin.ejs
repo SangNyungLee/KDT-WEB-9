@@ -32,6 +32,7 @@
                 }
             }).then((res)=>{ //응답값 받기
                 console.log('res',res)
+                console.log(res.data.result)
                 if(res.data.result){
                     alert("로그인 성공")
                     const form_profile = document.forms['form-profile']

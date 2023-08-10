@@ -5,12 +5,15 @@ const models = require('../models');
 exports.main = (req,res) =>{
     res.render('index')
 }
+//전체조회
 exports.getVisitors = (req,res) =>{
     models.Visitor.findAll().then((result) =>{
-        res.render('visitor',{data:result});
+        console.log('findAll', result);
+        // res.render('visitor',{data:result});
+        res.send({data : result, msg : '안녕하세요'});
     });
 }   //SELECT는 배열이 반환되고, 
-   // where로 찾아오면 객체로와서 []를 씌워줘서 배열로 만들어준다.
+   // where로 찾아오면 객체로와서 []를 씌 워줘서 배열로 만들어준다.
 
 //방명록 하나만조회
 exports.getVisitor = (req,res)=>{
@@ -35,8 +38,7 @@ exports.postVisitor = (req, res)=>{
 exports.patchVisitor = (req, res)=>{
     models.Visitor.update({
         name : req.body.name,    //바뀌고 싶은거
-        comment : req.body.comment
-    },{ where : {id : req.body.id}
+        comment : req.body.comment},{ where : {id : req.body.id}
 
     }).then(()=>{
         res.send({result:true});

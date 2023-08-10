@@ -10,7 +10,7 @@ router.post('/signup', controller.post_signup); // 이름이 같아도 통신만
 router.get('/signin', controller.signin);
 router.post('/signin', controller.post_signin);
 
-router.get('/findall', controller.findall);
+router.post('/findall', controller.findall);
 
 router.post('/profile', controller.post_profile);
 router.patch('/profile/edit', controller.edit_profile);
