@@ -21,22 +21,20 @@
     <script>
         function register(){
             const form = document.forms['form-register']
-            console.log(form)
-            console.log(form.userid)
-            console.log(form.pw)
-            console.log(form.nickname)
-            console.log(form.a)
-            console.log(form.b)
-            console.log(form.c)
-        //     axios({
-        //         method : 'POST',
-        //         url : '/user/signup',
-        //         data:{
-        //             userid : document.forms['form-register'].userid.value,
-        //             pw : document.forms['form-register'].pw.value,
-        //             id : document.forms['form-register'].nickname.value
-        //         }
-        //     })
+            axios({
+                method : 'POST',
+                url : '/user/signup',
+                data:{
+                    userid : form.userid.value,
+                    pw : form.pw.value,
+                    id : form.nickname.value
+                }
+            }).then((res)=>{
+                if(res.data.result){
+                    alert('회원가입을 축하합니다.');
+                    window.location.herf = '/user/signin';
+                };
+            })
         }
     </script>
 </body>

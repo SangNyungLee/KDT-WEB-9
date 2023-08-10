@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>로그인</h1>
+        <form name="form-login">
+            <label for="userid">ID</label>
+            <input type="text" id="userid" /><br />
+            <label for="pw">PW</label>
+            <input type="password" id="pw" /><br />
+            <button type="button" onclick="login()">로그인</button>
 
+<<<<<<< HEAD
     <title>Document</title>
 </head>
 <body>
@@ -47,4 +58,26 @@
     </script>
     
 </body>
+=======
+            <script>
+                function login(){
+                    const form = document.forms['form-login'];
+                    axios({
+                        method: 'POST',
+                        url: {
+                            userid : form.userid.value,
+                            pw: form.pw.value,
+                            name: from.nickmane.value,
+                        },
+                    }).then((res)=>{
+                        console.log('res', res);
+                        if(res.data.result){
+                            alert('로그인 되었습니다.')
+                        }
+                    });
+                }
+            </script>
+        </form>
+    </body>
+>>>>>>> 8265cad348729609a96a94ad7eb006e23ab74519
 </html>
