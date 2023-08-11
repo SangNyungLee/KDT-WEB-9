@@ -7,7 +7,11 @@ app.set('view engine', 'ejs')
 
 //cookie parser
 //일반쿠키
-app.use(cookieParser())
+// app.use(cookieParser())
+
+//암호화 쿠키
+app.use(cookieParser("newjeans"))
+
 
 //cookie 옵션객체
 const cookieConfig = {
@@ -22,11 +26,12 @@ const cookieConfig = {
     // secure : 웹 브라우저와 웹 서버가 https로 통신하는 경우에만 쿠키를 서버에 전송 -> 자주씀
     // signed : 쿠키의 암호화를 결정 (req.signedCookies 객체에 들어있음)
     httpOnly : true,
-    maxAge : 60 * 1000 //1분
-    
+    maxAge : 60 * 1000, //1분
+    signed: true,
 };
 
 app.get('/', (req,res)=>{
+    console.log(req.body);
     res.render('index')
 });
 app.get('/setCookie', (req, res)=>{
@@ -35,7 +40,8 @@ app.get('/setCookie', (req, res)=>{
     res.send('set Cookie');
 })
 app.get('/getCookie', (req, res)=>{
-    res.send(req.cookies);
+    // res.send(req.cookies);
+    res.send(req.signedCookies);    //암호화쿠키
 })
 app.get('/clearCookie', (req, res)=>{
     res.clearCookie('myCookie','myValue',cookieConfig)  //위에 쿠키랑 값이 똑같아야함

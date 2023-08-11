@@ -6,9 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>동적 폼 실습</h1>
+    <!-- <h1>동적 폼 실습</h1>
     <a href="/axiosGet">GET 실습</a>
-    <a href="/axiosPost">POST 실습</a>
+    <a href="/axiosPost">POST 실습</a> -->
+    <h1>Cookie로그인하기</h1>
+    아이디 : <input type="text" id="username">
+    비번 : <input type="text" pw="password">
+    <button type="button" onclick="login()">로그인하기</button>
     
+    <script>
+        function login(){
+            console.log('axios post');
+            const data ={
+                username : document.querySelector('#username').value,
+                password : document.querySelector('#password').value
+            }
+            console.log(data);
+            axios({
+                method:'POST',
+                url:'/'
+            })
+        }
+    </script>
 </body>
 </html>
