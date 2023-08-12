@@ -7,10 +7,10 @@ app.set('view engine', 'ejs')
 
 //cookie parser
 //일반쿠키
-// app.use(cookieParser())
+app.use(cookieParser())
 
 //암호화 쿠키
-app.use(cookieParser("newjeans"))
+// app.use(cookieParser("newjeans"))
 
 
 //cookie 옵션객체
@@ -27,13 +27,17 @@ const cookieConfig = {
     // signed : 쿠키의 암호화를 결정 (req.signedCookies 객체에 들어있음)
     httpOnly : true,
     maxAge : 60 * 1000, //1분
-    signed: true,
+    // signed: true,
 };
 
 app.get('/', (req,res)=>{
     console.log(req.body);
     res.render('index')
 });
+app.post('/',(req, res)=>{
+    console.log("req.body",req.body);
+    res.send("??")
+})
 app.get('/setCookie', (req, res)=>{
     //쿠키이름, 쿠키값, 옵션객체 순서로 옴
     res.cookie('myCookie','myValue',cookieConfig);
@@ -44,7 +48,8 @@ app.get('/getCookie', (req, res)=>{
     res.send(req.signedCookies);    //암호화쿠키
 })
 app.get('/clearCookie', (req, res)=>{
-    res.clearCookie('myCookie','myValue',cookieConfig)  //위에 쿠키랑 값이 똑같아야함
+    res.clearCookie('myCookie','myValue',cookieConfig)  
+    //위에 쿠키랑 값이 똑같아야함
     res.send('clear cookie');
 })
 

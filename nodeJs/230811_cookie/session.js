@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = 8000;
 
@@ -16,14 +17,16 @@ saveUninitialized: 세션에 저장할 내역이 없더라도 처음부터 세�
 */
 
 
-
+app.use(cookieParser());
 app.use(session({
-    secret:'newJeansSecret',
+    ket:'new',
+    secret:'newJeans',
+    secure : false,
     resave: false,
     saveUninitialized : true,
     cookie:{
-        httpOnly:true,
-        maxAge: 60*1000,
+        httpOnly:false,
+        maxAge: 60*60*24,
     }
 })
 );
@@ -45,6 +48,17 @@ app.get('/destroy', (req, res)=>{
     //예를들어 개인정보 페이지에서 세션정보를 지우고 나가야되는데 그 페이지가
     //계속유지되면 문제가 됨   
 })
+app.get('/loginCheck',(req,res)=>{
+    if(req.session.loginData){
+        res.send({loggedIn : true, loginData: req.session.loginData})
+    }else{
+        res.send({loggedIn : false})
+    }
+})
+app.post('/login', (req,res)=>{
+    
+})
+
 app.listen(PORT, ()=>{
     console.log(`http://localhost:${PORT}`)
 })
