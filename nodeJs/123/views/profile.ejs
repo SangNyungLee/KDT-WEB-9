@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>프로필페이지</h1>
+    <form name="profile-form">
+    <label for="userid">아이디</label>
+    <input type="text" name="userid" value="<%=userid%>"> <br/>
+    <label for="name">이름</label>
+    <input type="text" name="name" value="<%=name%>"> <br/>
+    <label for="pw">비밀번호</label>
+    <input type="password" name="pw" value="<%=pw%>"><br/>
+    <button type="button" onclick="edit()">수정</button>
+    <button type="button" onclick="del()">삭제</button>
+    <input type="hidden" name="id"value="<%=id%>">
+    </form>
+    <script>
+        const form = document.forms['profile-form'];
+        function edit(){
+            axios({
+                method:'POST',
+                url:'/user/edit',
+                data:{
+                    id : form.id.value,
+                    userid : form.userid.value,
+                    name : form.name.value,
+                    pw : form.pw.value,
+                }
+            }).then((res)=>{
+                console.log("res", res)
+                alert('회원정보 성공적으로 수정함~.')
+            });
+        };
+
+        function del(){
+            axios({
+                method :'POST',
+                url:'/user/del',
+                data:{
+                    id : form.id.value,
+                }
+            }).then((res)=>{
+                console.log("res",res)
+                alert('삭제되었습니다.')
+                window.location.href = '/user/signin';
+            });
+        };
+    </script>
+</body>
+</html>
