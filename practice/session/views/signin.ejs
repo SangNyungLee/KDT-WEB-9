@@ -33,8 +33,8 @@
                     console.log("결과", res);
                     document.getElementById('id').value = res.data.data.id;
                     alert("로그인성공!")
-                    // form2.submit();
-                    // window.location.href= '/'
+                    form2.submit();
+                    window.location.href= '/'
                 }).catch((res)=>{
                     alert("로그인을 실패했습니다.")
                     location.reload();

@@ -31,8 +31,6 @@ app.use(session({
 
 app.get('/', (req, res)=>{
     //세션설정 req.session.키
-    console.log(sessionStorage)
-    console.log(req.session)
     req.session.name = '홍길동'
     res.send("세션 설정 완료")
 

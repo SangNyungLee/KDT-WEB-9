@@ -17,6 +17,7 @@ app.use(session({
         maxAge: 60*60*24,
     }
 }));
+
 //res.locals로 로컬변수 생성
 app.use((req, res, next)=>{
     res.locals.user_id = "";

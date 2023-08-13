@@ -12,12 +12,9 @@ exports.main = (req, res)=>{
 exports.post_main = (req, res)=>{
     console.log("checked", req.body.checked)
     console.log("쿠키", req.cookies)
-    if(req.body.checked == true){
+    if(req.body.checked){
         res.cookie('myCookie', 'myValue',cookieConfig);
-    }else{
-
     }
-    
     res.send(req.body);
 }
 

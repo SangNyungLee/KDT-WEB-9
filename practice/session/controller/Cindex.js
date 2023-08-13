@@ -20,8 +20,8 @@ exports.post_signin = (req,res)=>{
     console.log("req바디", req.body)
     model.post_signin(req.body, (result)=>{
         if(result.length > 0){
+            console.log('result[0] :',result[0])
             req.session.member = result[0];
-            
             res.send({result : true, data: result[0]});
         }else{
             res.send({result : false, data: null});

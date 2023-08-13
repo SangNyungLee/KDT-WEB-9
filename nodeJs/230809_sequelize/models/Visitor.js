@@ -22,11 +22,11 @@ const Visitor = function(sequelize, DataTypes){
                 type : DataTypes.TEXT('medium'),
             }
         },
-        // {
-        //     tableName : 'visitor', 
-        //     freezeTableName : true,
-        //     timestamps: false,
-        // }
+        {
+            tableName : 'visitor', 
+            freezeTableName : true,
+            timestamps: false,
+        }
 
         );
         return model;

@@ -7,10 +7,10 @@ app.set('view engine', 'ejs')
 
 //cookie parser
 //일반쿠키
-app.use(cookieParser())
+// app.use(cookieParser())
 
 //암호화 쿠키
-// app.use(cookieParser("newjeans"))
+app.use(cookieParser("newjeans"))
 
 
 //cookie 옵션객체
@@ -25,9 +25,9 @@ const cookieConfig = {
     // domain : 쿠키가 전송될 도메인을 특정 가능(기본값 : 현재 도메인)  -> 자주안씀
     // secure : 웹 브라우저와 웹 서버가 https로 통신하는 경우에만 쿠키를 서버에 전송 -> 자주씀
     // signed : 쿠키의 암호화를 결정 (req.signedCookies 객체에 들어있음)
-    httpOnly : true,
+    httpOnly : false,
     maxAge : 60 * 1000, //1분
-    // signed: true,
+    signed: true,
 };
 
 app.get('/', (req,res)=>{
@@ -45,6 +45,7 @@ app.get('/setCookie', (req, res)=>{
 })
 app.get('/getCookie', (req, res)=>{
     // res.send(req.cookies);
+    console.log(req.signedCookies);
     res.send(req.signedCookies);    //암호화쿠키
 })
 app.get('/clearCookie', (req, res)=>{
@@ -54,5 +55,5 @@ app.get('/clearCookie', (req, res)=>{
 })
 
 app.listen(PORT, ()=>{
-    console.log(`http://localhost${PORT}`);
+    console.log(`http://localhost:${PORT}`);
 });
