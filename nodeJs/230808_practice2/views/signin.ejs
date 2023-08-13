@@ -15,7 +15,6 @@
             <input type="password" id="pw" /><br />
             <button type="button" onclick="login()">로그인</button>
 
-<<<<<<< HEAD
     <title>Document</title>
 </head>
 <body>
@@ -58,26 +57,4 @@
     </script>
     
 </body>
-=======
-            <script>
-                function login(){
-                    const form = document.forms['form-login'];
-                    axios({
-                        method: 'POST',
-                        url: {
-                            userid : form.userid.value,
-                            pw: form.pw.value,
-                            name: from.nickmane.value,
-                        },
-                    }).then((res)=>{
-                        console.log('res', res);
-                        if(res.data.result){
-                            alert('로그인 되었습니다.')
-                        }
-                    });
-                }
-            </script>
-        </form>
-    </body>
->>>>>>> 8265cad348729609a96a94ad7eb006e23ab74519
 </html>

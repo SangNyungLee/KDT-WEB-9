@@ -6,7 +6,7 @@ exports.main = (req, res) =>{
 };
 
 exports.comments = (req, res)=>{
-    res.render('comments',{commentInfos: Comment.comments() });  
+    res.render('comments',{commentInfos: Comment.comments()});  
                         //Comment는 위에서 가져온 변수, comments는 내가만든함수이름
 };
 

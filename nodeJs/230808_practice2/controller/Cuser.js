@@ -28,7 +28,6 @@ exports.post_signin = (req, res) => {
         } else {
             res.send({ result: false, data: null });    //실패하면 null값 보낸다.
         }
-<<<<<<< HEAD
     })
 }
 
@@ -53,11 +52,5 @@ exports.delete_profile = (req, res) =>{
         res.send({result : true});
     });
 };
-=======
-    });
-};
 
-exports.profile = (req, res) =>{
-    res.render('profile');
-}
->>>>>>> 8265cad348729609a96a94ad7eb006e23ab74519
+exports.module = User;

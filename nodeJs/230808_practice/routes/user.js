@@ -14,6 +14,6 @@ router.get('/profile', controller.profile)
 router.post('/write', controller.writer)
 
 //로그인
-router.post('/loginer', controller.loginer)
+// router.post('/loginer', controller.loginer)
 module.exports = router;
 

@@ -19,7 +19,6 @@ saveUninitialized: 세션에 저장할 내역이 없더라도 처음부터 세�
 
 app.use(cookieParser());
 app.use(session({
-    ket:'new',
     secret:'newJeans',
     secure : false,
     resave: false,
@@ -28,35 +27,27 @@ app.use(session({
         httpOnly:false,
         maxAge: 60*60*24,
     }
-})
-);
+}));
 
 app.get('/', (req, res)=>{
     //세션설정 req.session.키
+    console.log(sessionStorage)
+    console.log(req.session)
     req.session.name = '홍길동'
     res.send("세션 설정 완료")
+
 })
 app.get('/name', (req,res)=>{
-    console.log(req.session.name)
+    // console.log(req.session.name)
     res.send({id:req.sessionID, name: req.session.name})
 })
 app.get('/destroy', (req, res)=>{
     req.session.destroy((err)=>{
-            return;   
+        return;
     })
     res.redirect('/name')
     //예를들어 개인정보 페이지에서 세션정보를 지우고 나가야되는데 그 페이지가
     //계속유지되면 문제가 됨   
-})
-app.get('/loginCheck',(req,res)=>{
-    if(req.session.loginData){
-        res.send({loggedIn : true, loginData: req.session.loginData})
-    }else{
-        res.send({loggedIn : false})
-    }
-})
-app.post('/login', (req,res)=>{
-    
 })
 
 app.listen(PORT, ()=>{
