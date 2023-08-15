@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1> JWT 실습</h1>
+    <!-- <button type="button" onclick="verify()">보내보기</button> -->
+    <div id="test"></div>
+    <script>
+            const token = localStorage.getItem("login")
+        console.log("꺼냈음", token)
+        let data ='';
+        // jwt.verify(token, SECRET)
+        if(!token){
+            console.log("토큰업음 ㄷㄷ")
+            document.getElementById("test").innerHTML=
+            `
+            <a href="/signup">회원가입</a>
+            <a href="login">로그인</a>
+            `
+        }else{
+            console.log("토큰있음 ㅋㅋ")
+                axios({
+                    method : 'GET',
+                    url: '/token',
+                    headers:{
+                        Authorization : `Bearer ${token}`
+                    }
+                }).then((res)=>{
+                    console.log("인증", res)
+                    document.getElementById("test").innerHTML=
+                    `
+                    <div>${res.data.userInfo.name}님 환영합니다.</div>
+                    <button type="button" onclick="logout()">로그아웃</button>
+                    `
+                }).catch((res)=>{
+                    console.log("오류",res)
+                })
+        }
+
+        function logout(){
+            localStorage.clear();
+            alert("로그아웃 되었습니다.")
+            document.location.href='/';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>로그인</h1>
+    <form name="login-form">
+        <input type="text" id="id" placeholder="ID"><br/>
+        <input type="password" id="pw" placeholder="pw"><br/>
+        <button type="button" onclick="login()">로그인</button>
+    </form>
+
+    <script>
+        function login(){
+            const form = document.forms["login-form"];
+            axios({
+                method : 'POST',
+                url : '/login',
+                data : {
+                    id : form.id.value,
+                    pw : form.pw.value,
+                }
+            }).then((res)=>{
+                console.log("토큰값올듯",res)
+                console.log("토큰꺼내기",res.data.token)
+                localStorage.setItem("login",res.data.token);
+                alert("로그인 되었습니다.")
+                window.location.href='/';
+            }).catch((res)=>{
+                alert("로그인실패")
+                console.log("오류!")
+            })
+        }
+    </script>
+</body>
+</html>
