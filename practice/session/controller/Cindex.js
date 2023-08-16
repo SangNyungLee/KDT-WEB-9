@@ -20,9 +20,10 @@ exports.post_signin = (req,res)=>{
     console.log("req바디", req.body)
     model.post_signin(req.body, (result)=>{
         if(result.length > 0){
-            console.log('result[0] :',result[0])
-            req.session.member = result[0];
-            res.send({result : true, data: result[0]});
+            const [userInfo] = result
+            req.session.member = userInfo;
+            console.log("유저인포", userInfo);
+            res.send({result : true, data: userInfo});
         }else{
             res.send({result : false, data: null});
         }
