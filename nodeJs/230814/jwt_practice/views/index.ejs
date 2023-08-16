@@ -19,16 +19,16 @@
         const token = localStorage.getItem("login");
         const button = document.querySelector('#button')
         console.log(token);
-        let data =''
+        let data ='';
         if(!token){
             data = `
             <a href="/signup">회원가입</a>
             <a href="login">로그인</a>
-            `
+            `;
         }else {
             const res = await axios({
                 method:'GET',
-                url: '/login',
+                url: '/token',
                 headers:{
                     Authorization : `Bearer ${token}`
                 },
@@ -45,7 +45,7 @@
 
         function logout(){
             localStorage.clear();
-            document.location.href='/'
+            document.location.href='/';
         }
     </script>
 </body>

@@ -17,21 +17,23 @@
 
     <script>
         async function login(){
-            console.log('login')
+            console.log('로그인 login')
             const form = document.forms['login-form'];
             const res = await axios({
                 method : 'POST',
-                url : '/token',
+                url : '/login',
                 data :{
                     id : form.id.value,
-                    pw : form.id.value,
+                    pw : form.password.value,
                 },
             });
             console.log("Res",res.data);
             if(res.data.result){
+                console.log("보내는거성공")
                 localStorage.setItem("login",res.data.token);
                 window.location.href = '/';
             }else{
+                console.log("보내는거실패")
                 alert(res.data.message);
                 document.location.reload();
             }
