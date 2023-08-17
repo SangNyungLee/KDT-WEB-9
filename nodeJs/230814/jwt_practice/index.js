@@ -10,6 +10,8 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 
 app.get('/',(req,res)=>{
+    console.log("dir이름",__dirname)
+    console.log("file이름",__filename)
     res.render('index')
 })
 app.get('/login', (req,res)=>{
