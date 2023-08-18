@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <form name="login">
+        아이디: <input type="text" id="id" placeholder="ID" /><br />
+        비밀번호: <input type="password" id="pw" placeholder="PW" /><br />
+        <button type="button" onclick="loginFunc()">로그인</button>
+    </form>
+    <script>
+        async function loginFunc(){
+            const data={
+                userid: document.querySelector('#id').value,
+                pw: document.querySelector('#pw').value,
+            }
+            const result= await axios({
+                method:'POST',
+                url:'/login',
+                data,
+            });
+            if(!result.data.result){
+                console.log("!!!!!!!!!!!!!")
+                alert(result.data.message);
+            }else{
+                // const form_profile = document.forms['form-profile']
+                // form_profile.
+                localStorage.setItem('token',result.data.token)
+                console.log("아아디",result.data.userid)
+                localStorage.setItem('id',result.data.userid)
+                console.log("로그인후데이터", result.data)
+                alert('로그인이 완료되었습니다.');
+                document.location.href='/';
+            }
+        }
+    </script>
+</body>
+</html>
