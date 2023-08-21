@@ -26,7 +26,7 @@
             formData.append('title', title)
 
             for(i=0; i<file.files.length ; i++){
-                formData.append('dynamic', file.files[i])
+                formData.append('dynamic', file.files[i])   //얘 이름은 index.js에 upload.array이름이랑 같아야됨
             }
             console.log('폼데이터', formData)
             const result = await axios({
@@ -40,8 +40,11 @@
             console.log("보낸결과값", result)
             console.log("경로?", result.data[0].path)
             for(i=0 ; i<result.data.length ; i++){
-                 resultBox.innerHTML += `<img src = ${result.data[i].path}><br/>`;
-                // 
+                //  resultBox.innerHTML += `<img src = ${result.data[i].path}><br/>`;
+                const img = document.createElement('img')
+                img.src = result.data[i].path
+                img.style.width = '500px';
+                resultBox.appendChild(img)
             }
         }
     </script>
