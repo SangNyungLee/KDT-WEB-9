@@ -36,7 +36,7 @@ exports.post_signin = async(req,res)=>{
     if(password2){
         const token = jwt.sign(req.body.userid, SECRET);
         const result = await User.findOne({
-            where : {userid: req.body.userid}
+            where : {userid} = req.body
         })
         localStorage.setItem("login",token)
         res.send(result)

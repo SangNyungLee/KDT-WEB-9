@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div>싱글 연습</div>
+        <form action="/upload", method="POST", enctype="multipart/form-data">
+            <input type="file" name="userfile"><br/>
+            <input type="text" name="title"> <br/>
+            <button type="submit">업로드</button>
+        </form>
+
+        <h1>멀티 연습(ver.1) : 한번에 여러개 업로드</h1>
+        <form action="/upload/array" method="POST" enctype="multipart/form-data">
+            <!--여러개 한번에 보낼거니깐 multiple 옵션-->
+        <input type="file" name="userfiles" multiple /> <br/>
+        <input type="text" name="title"><br/>
+        <button type="submit">업로드</button>
+        </form>
+
+        <h1>멀티 연습(ver.2) 여러개의 요청</h1>
+        <form action="/upload/fields" method="POST" enctype="multipart/form-data">
+            <input type="file" name="userfile1" multiple><br/>  
+            <input type="text" name="title1"><br/>
+            <input type="file" name="userfile2"><br/>
+            <input type="text" name="title2"><br/>
+            <button type="submit">업로드</button>
+        </form>
+
+        <h1>동적파일 업로드</h1>
+        <form onsubmit="fileupload(event)">
+            <input type="file" id="dynamic"/><br/>
+            <input type="text" id="title"><br/>
+            <button type="submit">업로드</button>
+        </form>
+        <br/>
+        <div class="result"></div>
+        <script>
+            const resultBox = document.querySelector('.result');
+            async function fileupload(event){
+                event.preventDefault(); //기본 제출 동작을 막음
+                console.log('file upload');
+                const title = document.querySelector('#title').value
+                // 파일에 접근하기 위해서 file.files사용하는 것이고
+                // file.files는 배열을 반환하며 우리가 원하는 것은
+                // 첫번쨰 파일이기 떄문에 file.files[0] 사용
+                const file = document.querySelector('#dynamic');
+                console.log(title, file.files[0])
+
+                //데이터를 form에 담아서 보내야됨
+                //원래 정적form은 multipart form 데이터 안에 담아서 보냈으니깐
+                // 얘도 form 안에 담아서 보내야됨
+                //자바스크립트 내장객체이고, form데이터를 생성시켜 줌
+                const formData = new FormData()
+                // append(key, value) 형태로 넣음
+                // !중요! : 파일은 항상 제일 마지막에 선언!!
+                formData.append('title', title) //위에 const title가져오는거임
+                formData.append('dynamic', file.files[0])//위에 const file
+                const res = await axios({
+                    method:'POST',
+                    url:'/dynamic',
+                    data: formData,
+                    Headers:{
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+                console.log(res)
+                resultBox.innerHTML=`<img src = ${res.data.path}>`
+            }
+            
+        </script>
+    </body>
+</html>
