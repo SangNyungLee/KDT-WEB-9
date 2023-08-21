@@ -21,11 +21,7 @@
             event.preventDefault();
 
             const title = document.querySelector('#title').value
-            const feed = document.createElement('div');
             const file = document.querySelector('#dynamic');
-            console.log("타이틀", title, file.files[0])
-            console.log("타이틀2",file.files[1])
-            console.log("한꺼번에", file.files)
             const formData = new FormData()
             formData.append('title', title)
 

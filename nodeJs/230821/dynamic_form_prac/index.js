@@ -27,6 +27,7 @@ const limits ={
 }
 
 const upload = multer({storage, limits : limits})
+// limits 없어도됨
 
 
 app.post('/dynamic', upload.array('dynamic'),(req,res)=>{
