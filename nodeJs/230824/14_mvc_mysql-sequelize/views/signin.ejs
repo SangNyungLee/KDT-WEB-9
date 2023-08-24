@@ -16,9 +16,10 @@
 
         <script>
             async function login(event) {
+                let res
                 event.preventDefault(); //기본 제출 멈춤
                 try {
-                    const res = await axios({
+                    res = await axios({
                         method: 'POST',
                         url: '/signin',
                         data: {
@@ -26,6 +27,9 @@
                             pw: document.querySelector('#pw').value,
                         },
                     });
+                    } catch (error) {
+                        console.log(error);
+                    }
                     if (res.data.result) {
                         alert(`${res.data.data.name}님 로그인 성공`);
                         document.location.href = `/profile/${res.data.data.id}`;
@@ -33,9 +37,6 @@
                         alert('로그인 실패');
                         document.location.reload();
                     }
-                } catch (error) {
-                    console.log(error);
-                }
             }
         </script>
     </body>
