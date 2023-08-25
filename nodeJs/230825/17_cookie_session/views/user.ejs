@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hh"></h1>
+    <div >회원리스트</div>
+    <table>
+        <tr id="userlist"></tr>
+    </table>
+
+
+    <script>
+        (function(){
+            boxlist = document.getElementById('userlist')
+            
+            axios({
+                method : 'POST',
+                url : '/user'
+            }).then((res)=>{
+                document.getElementById("hh").innerText=
+                `
+                ${res.data.username} 님 환영합니다.
+                `
+                for(let i=0; i<res.data.result.length ; i++){
+                    divv = document.createElement("p")        
+                    console.log("i", i)
+                    divv.innerHTML = `${i}번 회원 <br/> 이름: ${res.data.result[i].name} <br/> 아이디: ${res.data.result[i].userid}`
+                    boxlist.append(divv)
+                }
+            })
+        }())
+
+    </script>
+</body>
+</html>
