@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원추가하기</h1>
+    아이디 : <input type="text" id="userid"><br/>
+    이름 : <input type="text" id="name"><br/>
+    비밀번호 : <input type="password" id="pw"><br/>
+    <button type="button" onclick="add()">추가하기</button>
+    <%var num = 0 %>
+    <table id="tb">
+        <th>번호</th>
+        <th>아이디</th>
+        <th>이름</th>
+        <tr>
+            <td>1</td>
+            <td>1.1</td>
+            <td>1.2</td>
+        </tr>
+        <%for(let i=0; i<data.length ; i++){ %>
+        <%let id = JSON.stringify(data[i].id)%>
+        <%let userid = JSON.stringify(data[i].userid)%>
+        <%let name = JSON.stringify(data[i].name)%>
+        <tr>
+            <td><%= id%></td>
+            <td><%= userid.replaceAll("\"","")%></td>  
+            <td><%= name.replaceAll("\"","") %></td>
+        </tr>
+        <% num = id %>
+        <%}%>
+    </table>
+
+    <h2>회원정보</h2>
+    <script>
+        console.log(num)
+        async function add(){
+            const res = axios({
+                method : 'POST',
+                url : '/useradd',
+                data : {
+                    userid : document.getElementById('userid').value,
+                    name : document.getElementById('name').value,
+                    pw : document.getElementById('pw').value,
+                }
+            })
+            console.log("ㅋㅋㅋㅋ", res.insertId)
+        }
+
+    </script>
+</body>
+</html>

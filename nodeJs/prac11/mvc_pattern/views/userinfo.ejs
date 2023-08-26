@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원정보 조회하기</h1>
+    <button type="button" onclick="search()">정보조회</button>
+    <div id="sea"></div>
+
+    <script>
+        box = document.getElementById('sea');
+        async function search(){
+            const res = await axios({
+                method : 'POST',
+                url : '/userinfo'
+            })
+            console.log("회원전체찾기 결과는?", res.data);
+            for(let i=0; i<res.data.length ; i++){
+                divv = document.createElement('p')
+                divv.innerHTML = `번호 : ${res.data[i].id} 아이디 : ${res.data[i].userid} 이름 : ${res.data[i].name}`
+                box.append(divv)
+            }
+        }
+    </script>
+</body>
+</html>
