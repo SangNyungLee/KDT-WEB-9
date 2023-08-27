@@ -22,13 +22,14 @@ exports.post_signup = (data,cb)=>{
 
 exports.post_signin = (data,cb)=>{
     const query = `SELECT * FROM user WHERE userid = ${data.userid} AND pw = ${data.pw}`
+    // const query = `SELECT * FROM user`
     conn.query(query, (err, rows)=>{
         if(err){
             console.log(err)
             return ;
         }
         console.log('로그인확인', rows)
-        cb();
+        cb(rows);
     })
 }
 
@@ -50,6 +51,7 @@ exports.useradd = (data, cb)=>{
             console.log(err)
             return;
         }
+        console.log("?????????", rows)
         cb(rows);
     })
 }
@@ -60,7 +62,29 @@ exports.post_useradd = (data, cb)=>{
             console.log(err);
             return ;
         }
+        console.log("쿼리는?",query)
+        console.log("rows는?", rows)
         cb(rows);
     })
 
+}
+exports.useradd2 = (data, cb)=>{
+    const query = `SELECT * FROM user WHERE id = ${data.id}`
+    conn.query(query, (err,rows)=>{
+        if(err){
+            console.log(err);
+            return;
+        }
+        cb(rows)
+    })
+}
+exports.post_profile = (data, cb)=>{
+    const query = `UPDATE user SET userid = '${data.userid}','name=${data.name}','pw=${data.pw} `
+    conn.query(query, (err, rows)=>{
+        if(err){
+            console.log(err)
+            return;
+        }
+        cb()
+    })
 }

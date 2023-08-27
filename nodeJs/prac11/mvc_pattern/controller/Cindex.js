@@ -14,8 +14,8 @@ exports.post_signup = (req,res)=>{
     })
 }
 exports.post_signin = (req,res) =>{
-    model.post_signin(req.body,()=>{
-        res.json({result : true})
+    model.post_signin(req.body,(data)=>{
+        res.json({result : true, data})
     })
 }
 //로그인
@@ -44,6 +44,29 @@ exports.post_useradd = (req,res)=>{
     model.post_useradd(req.body, (data)=>{
         console.log("??", data);
         console.log("1!!!", data.insertId)
-        res.send({result:true, data});
+        res.send({result:true, id : data.insertId});
     })
 }
+
+exports.useradd2 = (req,res)=>[
+    model.useradd2(req.body, (data)=>{
+        res.json(data);
+    })
+]
+
+//회원 수정하기
+exports.profile = (req,res)=>{
+    model.profile(req.body,(abcd)=>{
+        res.render('profile',{
+            id: abcd[0].id,
+            userid: abcd[0].userid,
+            name : abcd[0].name,
+            pw : abcd[0].pw,
+        })
+    })
+}
+// exports.post_profile = (req,res)=>{
+//     model.post_profile(req.body, ()=>{
+//         res.json({result:true})
+//     })
+// }

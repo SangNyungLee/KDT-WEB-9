@@ -18,4 +18,9 @@ router.post('/userinfo', controller.post_userinfo);
 //회원 추가하기
 router.get('/useradd', controller.useradd);
 router.post('/useradd', controller.post_useradd);
+router.post('/useradd2', controller.useradd2);
+
+//회원 수정하기
+router.post('/profile', controller.profile);
+// router.patch('/profile', controller.post_profile);
 module.exports = router;

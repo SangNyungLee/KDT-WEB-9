@@ -14,10 +14,17 @@
         비밀번호 : <input type="password" id="pw"><br/>
         <button type="button" onclick="signin()">로그인하기</button>
     </form>
+    <form action="/profile" name= "formsubmit" method="post" hidden>
+        <input type="text" id="id" value="">
+        <input type="text" id="userid" value="">
+        <input type="text" id="name" value="">
+        <input type="text" id="pw" value="">
+    </form>
 
     <script>
         async function signin() {
             const form = document.forms['signin-form']
+            const form2 = document.forms['formsubmit']
             const res = await axios({
                 method : 'POST',
                 url : '/signin',
@@ -29,8 +36,15 @@
             console.log("로그인 결과", res)
             console.log("??????//", res.data.result)
             if(res.data.result){
+                console.log(res.data)
                 alert('로그인에 성공하셨습니다.')
-            }else{
+                // document.getElementById('id').value = res.data.data[0].id
+                // form2.userid.value = res.data.data[0].id
+                // form2.name.value = res.data.data[0].name
+                // form2.pw.value = res.data.data[0].pw
+                // window.location.href ='/profile'
+                // form2.submit();
+            }else{ 
                 alert('로그인에 실패하였습니다.')
                 window.location.href='/signin'
             }

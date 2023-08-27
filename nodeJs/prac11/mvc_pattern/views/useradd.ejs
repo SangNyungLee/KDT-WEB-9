@@ -13,16 +13,13 @@
     이름 : <input type="text" id="name"><br/>
     비밀번호 : <input type="password" id="pw"><br/>
     <button type="button" onclick="add()">추가하기</button>
-    <%var num = 0 %>
-    <table id="tb">
+
+
+    <h2>회원정보</h2>
+    <table border = "1">
         <th>번호</th>
         <th>아이디</th>
         <th>이름</th>
-        <tr>
-            <td>1</td>
-            <td>1.1</td>
-            <td>1.2</td>
-        </tr>
         <%for(let i=0; i<data.length ; i++){ %>
         <%let id = JSON.stringify(data[i].id)%>
         <%let userid = JSON.stringify(data[i].userid)%>
@@ -35,12 +32,10 @@
         <% num = id %>
         <%}%>
     </table>
-
-    <h2>회원정보</h2>
     <script>
-        console.log(num)
+        let table = document.querySelector('table')
         async function add(){
-            const res = axios({
+            const res = await axios({
                 method : 'POST',
                 url : '/useradd',
                 data : {
@@ -49,7 +44,26 @@
                     pw : document.getElementById('pw').value,
                 }
             })
-            console.log("ㅋㅋㅋㅋ", res.insertId)
+            const resadd = await axios({
+                method:'POST',
+                url : '/useradd2',
+                data:{
+                    id : res.data.id
+                }
+            })
+            console.log("들어있는거", resadd.data[0].id)
+            const {id, userid, name, pw} = resadd.data[0]
+            let tr = document.createElement('tr')
+            let id_td = document.createElement('td')
+            let userid_td = document.createElement('td')
+            let name_td = document.createElement('td')
+            id_td.innerText = id;
+            userid_td.innerText = userid;
+            name_td.innerText = name;
+            tr.appendChild(id_td)
+            tr.appendChild(userid_td)
+            tr.appendChild(name_td)
+            table.appendChild(tr)
         }
 
     </script>
