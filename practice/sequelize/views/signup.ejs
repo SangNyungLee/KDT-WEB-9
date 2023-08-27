@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form name = "signup-form" method="post">
+        <input type="text" id="name" placeholder="이름">
+        <input type="text" id="userid" placeholder="아이디">
+        <input type="password" id="pw" placeholder="비밀번호">
+        <button type="button" onclick="signup()">회원가입하기</button>
+    </form>
+    
+    <script>
+        const form = document.forms['signup-form'];
+        async function signup(){
+            const res = await axios({
+                method: 'POST',
+                url : '/signup',
+                data :{
+                    userid : form.userid.value,
+                    name : form.name.value,
+                    pw : form.pw.value,
+                }
+            })
+        }
+    </script>
+</body>
+</html>
