@@ -1,6 +1,13 @@
+const http = require('http')
 const ws = require('ws');
 const express = require('express')
 const app = express()
+//http 서버
+const server = http.createServer(app)
+
+//웹 소켓 서버 접속
+const wss = new ws.Server({server: server});
+
 const PORT = 8000;
 
 app.set('view engine', 'ejs');
@@ -9,12 +16,8 @@ app.get('/', (req,res)=>{
     res.render('client')
 })
 
-const server = app.listen(PORT, ()=>{
-    console.log(`http://localhost:${PORT}`)
-})
-//웹 소켓 서버 접속
-// const wss = new ws.Server({port : PORT});
-const wss = new ws.Server({server: server});
+
+
 
 //브라우저(클라이언트)들을 담을 배열변수
 const sockets = []
@@ -46,4 +49,8 @@ wss.on("connection",(socket)=>{
         console.log('클라이언트와 연결이 종료되었습니다.');
     })
 
+})
+
+server.listen(PORT, ()=>{
+    console.log(`http://localhost:${PORT}`)
 })
