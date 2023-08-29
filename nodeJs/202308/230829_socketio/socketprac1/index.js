@@ -12,17 +12,21 @@ app.get('/', (req,res)=>{
 })
 
 io.on('connection',(socket)=>{
-    socket.on('hello',(arg,cb)=>{
-        console.log("client: ", arg)
-        cb(arg)
-    })
-    socket.on('study',(arg,cb)=>{
-        console.log("client: ", arg)
-        cb(arg)
-    })
-    socket.on('bye',(arg,cb)=>{
-        console.log("client: ", arg)
-        cb(arg)
+    // socket.on('hello',(arg,cb)=>{
+    //     console.log("client: ", arg)
+    //     cb(arg)
+    // })
+    // socket.on('study',(arg,cb)=>{
+    //     console.log("client: ", arg)
+    //     cb(arg)
+    // })
+    // socket.on('bye',(arg,cb)=>{
+    //     console.log("client: ", arg)
+    //     cb(arg)
+    // })
+    socket.on('gogo',(res,cb)=>{
+        console.log(res);
+        cb(res);
     })
 
 })
