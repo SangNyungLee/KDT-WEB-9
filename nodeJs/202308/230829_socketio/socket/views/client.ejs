@@ -13,6 +13,7 @@
         <input type="text" id="user" placeholder="사용자명"/><br/>
         <input type="text" id="message" placeholder="채팅내용"><br/>
         <button>채팅</button>
+
     </form>
     <script>
         const charForm = document.querySelector('#chat')
@@ -35,6 +36,7 @@
             li.textContent = `${arg.name} : ${arg.message}`;
             ul.appendChild(li)
         })
+
     </script>
 </body>
 </html>
