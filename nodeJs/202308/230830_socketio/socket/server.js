@@ -75,6 +75,10 @@ io.on("connection", (socket) => {
         }
     });
 
+    //타이핑중
+    socket.on('typing',(username, msgValue)=>{
+        socket.broadcast.to(socket.room).emit("type", username, msgValue);
+    })
     socket.on("disconnect", () => {
         if (socket.room) {
             socket.leave(socket.room);
