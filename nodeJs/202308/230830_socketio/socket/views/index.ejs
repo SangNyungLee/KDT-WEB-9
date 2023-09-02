@@ -1,213 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="/socket.io/socket.io.js"></script>
-        <!-- 제이쿼리cdn -->
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-        <title>Document</title>
-        <style>
-            #body{
-                width: 100%;
-                height: 70vh;
-                position: relative;
-                background: skyblue;
-            }
-            #chat{
-                position: absolute;
-                bottom: 0;
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-            }
-            #chat input {
-                width: 80%;
-            }
-            .my-chat{
-                display: flex;
-                justify-content: end;
-                padding: 2px 0px;
-            }
-            .my-chat p{
-                margin: 0;
-                padding: 10px;
-                background: yellow;
-                border-radius: 10px;
-                margin-right: 10px;
-            }
-            .other-chat{
-                display: flex;
-                justify-content: start;
-                padding: 2px 0px;                
-            }
-            .other-chat p{
-                margin: 0;
-                padding: 10px;
-                background-color: white;
-                border-radius: 10px;
-                margin-left: 10px;
-            }
-            .pp p{
-                background-color: hotpink;
-            }
-            /* 메세지 타이핑 display */
-        </style>
-    </head>
-    <body>
-        <div><h1>접속자명단</h1></div>
-        <ul>
-            <li>1번</li>
-            <li>2번번</li>
-        </ul>
-
-
-        <div id="main">
-            <form id="room">
-                <input type="text" id="roomName" placeholder="채팅방 만들기" />
-                <input
-                    type="text"
-                    id="userName"
-                    placeholder="사용자 이름 입력"
-                />
-                <button>만들기</button>
-            </form>
-            <ul id="lists"></ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- 제이쿼리cdn -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style>
+      #body {
+        width: 100%;
+        height: 70vh;
+        position: relative;
+        background: skyblue;
+      }
+      #chat {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      #chat input {
+        width: 80%;
+      }
+      .my-chat {
+        display: flex;
+        justify-content: end;
+        padding: 2px 0px;
+      }
+      .my-chat p {
+        margin: 0;
+        padding: 10px;
+        background: yellow;
+        border-radius: 10px;
+        margin-right: 10px;
+      }
+      .other-chat {
+        display: flex;
+        justify-content: start;
+        padding: 2px 0px;
+      }
+      .other-chat p {
+        margin: 0;
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        margin-left: 10px;
+      }
+      .pp p {
+        background-color: hotpink;
+      }
+      /* 메세지 타이핑 display */
+    </style>
+  </head>
+  <body>
+    <div><h1>접속자명단</h1></div>
+    <ul>
+      <li id="userlength"></li>
+      <!-- <li>2번번</li> -->
+    </ul>
+    <div id="immg"></div>
+    <div id="main">
+      <form id="room">
+        <input type="text" id="roomName" placeholder="채팅방 만들기" />
+        <input type="text" id="userName" placeholder="사용자 이름 입력" />
+        <button>만들기</button>
+      </form>
+      <ul id="lists"></ul>
+    </div>
+    <div id="body" hidden>
+      <div id="msg">
+        <div class="my-chat">
+          <p>채팅테스트(나)</p>
         </div>
-        <div id="body" hidden>
-            <div id="msg">
-                <div class="my-chat">
-                    <p>채팅테스트(나)</p>
-                </div>
-                <div class="other-chat">
-                    <p>채팅테스트(상대방)</p>
-                </div>
-            </div>
-        <div id="messageStatus" style="display: none;">상대방이 메세지를 입력하는 중입니다.</div>
-            <form id="chat">
-
-                <select id="userList"></select>
-                <input type="text" id="message" placeholder="메세지 입력" />
-                <button>입력</button>
-            </form>
+        <div class="other-chat">
+          <p>채팅테스트(상대방)</p>
         </div>
+      </div>
 
-        <script>
-            const socket = io();
-            const roomForm = document.querySelector("#room");
-            const chatForm = document.querySelector("#chat");
-            const msg = document.querySelector("#msg");
-            //유저 리스트 목록
-            const lists = document.getElementById('#userList');
-            const option = document.querySelector('option');
-            const option_name = ""
-            let myName;
-            //타이머
-            let timer;
+      <div id="messageStatus" style="display: none">
+        상대방이 메세지를 입력하는 중입니다.
+      </div>
+      <form id="chat">
+        <select id="userList"></select>
+        <input type="text" id="message" placeholder="메세지 입력" />
+        <!-- 파일 업로드 input 안보이게하고 다른이미지로 대체  -->
+        <label for="fll">
+          <img
+            src="data:image/png;base64,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"
+            style="width: 30px; height: 30px; background-color: white"
+          />
+        </label>
+        <!-- accept 옵션 : 이미지파일만 올릴 수 있게 하기 -->
+        <input
+          type="file"
+          id="fll"
+          onchange="upload(this.files)"
+          style="display: none"
+          accept="image/*"
+        />
+        <button>입력</button>
+      </form>
+    </div>
+    <button id="out" onclick="out()">나가기</button>
 
-            //룸리스트
-            socket.on("roomList", (roomLists) => {
-                console.log(roomLists);
-                const lists = document.querySelector("#lists");
-                lists.textContent = "";
-                roomLists.forEach((roomList) => {
-                    const li = document.createElement("li");
-                    li.textContent = `${roomList} 와 닉네임 입력 후 입장`;
-                    lists.appendChild(li);
-                });
-            });
+    <script>
+      const socket = io();
+      const roomForm = document.querySelector("#room");
+      const chatForm = document.querySelector("#chat");
+      const msg = document.querySelector("#msg");
+      //유저 리스트 목록
+      const lists = document.getElementById("#userList");
+      const option = document.querySelector("option");
+      const option_name = "";
+      //내 이름
+      let myName;
+      //타이핑 타이머
+      let timer;
+      //유저수
+      let userlength;
 
-            //사용자 리스트
-            socket.on("userList", (userLists) => {
-                console.log(userLists[0].userid);
-                console.log(userLists[0].username);
-                console.log(userLists.length);
-                const lists = document.querySelector("#userList");
-                lists.textContent = "";
-                let options = `<option value="all">전체</option>`;
-                for (let i=0 ;i<userLists.length ; i++) {
-                    options += `<option value="${userLists[i].userid}">${userLists[i].username}</option>`;
-                }
-                lists.innerHTML = options;
-            });
+      //룸리스트
+      socket.on("roomList", (roomLists) => {
+        console.log(roomLists);
+        const lists = document.querySelector("#lists");
+        lists.textContent = "";
+        roomLists.forEach((roomList) => {
+          const li = document.createElement("li");
+          li.textContent = `${roomList} 와 닉네임 입력 후 입장`;
+          lists.appendChild(li);
+        });
+      });
 
-            //메세지 띄우기
-            socket.on("newMessage", (message, nick, bool) => {
-                console.log("내 닉네임", myName)
-                console.log("메세지랑 닉네임", message, nick);
-                const div = document.createElement("div");
-                const p = document.createElement('p')
+      //사용자 리스트
+      socket.on("userList", (userLists) => {
+        console.log(userLists[0].userid);
+        console.log(userLists[0].username);
+        console.log("현재 접속자 수 : ", userLists.length);
+        userlength = userLists.length;
+        $("#userlength").text(`현재 접속자 수 : ${userlength}`);
 
-                if(myName === nick){
-                    //내가 입력한 텍스트
-                    div.classList.add('my-chat');                   
-                }else{
-                    div.classList.add('other-chat');                    
-                }
-                if(bool){
-                    div.classList.add('pp');
-                }
+        const lists = document.querySelector("#userList");
+        lists.textContent = "";
+        let options = `<option value="all">전체</option>`;
+        for (let i = 0; i < userLists.length; i++) {
+          options += `<option value="${userLists[i].userid}">${userLists[i].username}</option>`;
+        }
+        lists.innerHTML = options;
+      });
 
-                //채팅텍스트
-                p.textContent = bool? "(귓속말)" + nick + ": "+ message : nick + ": "+ message;
-                div.appendChild(p);
-                msg.appendChild(div);
-            });
-            ///폼 이벤트
-            roomForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const roomName = roomForm.querySelector("#roomName");
-                const userName = roomForm.querySelector("#userName");
+      //메시지 띄우기
+      socket.on("newMessage", (message, nick, bool) => {
+        console.log("내 닉네임", myName);
+        console.log("메세지랑 닉네임", message, nick);
+        const div = document.createElement("div");
+        const p = document.createElement("p");
+        // 메시지 보냈을 때 입력하는 중입니다. 사라지게 하기
+        $("#messageStatus")[0].style.display = "none";
 
-                if (roomName.value === "" || userName.value === "") {
-                    alert("방이름과 닉네임 적어주세요");
-                    return;
-                }
-                socket.emit("create", roomName.value, userName.value, () => {
-                    const main = document.querySelector("#main");
-                    const body = document.querySelector("#body");
-                    main.hidden = true;
-                    body.hidden = false;
-                    //전역변수에 입력한 닉네임을 저장
-                    myName = userName.value;
-                });
-            });
-            chatForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const user = document.querySelector("#userList");
-                const message = document.querySelector("#message");
-                const lists = document.querySelector("#userList");
-                const msg = {
-                    nick : myName,
-                    user: user.value,
-                    message: message.value,
-                };
-                socket.emit("sendMessage", msg, lists.value);
-                message.value = '';
-            });
-            //입장안내문구
-            socket.on('notice',(user)=>{
-                console.log(`${user} 님이 입장하셨습니다.`)
-                const div = document.createElement("div");
-                const p = document.createElement('p')
-                p.textContent = user+"님이 입장하셨습니다." 
-                div.appendChild(p);
-                msg.appendChild(div);
-            })
+        if (myName === nick) {
+          //내가 입력한 텍스트
+          div.classList.add("my-chat");
+        } else {
+          div.classList.add("other-chat");
+        }
+        if (bool) {
+          div.classList.add("pp");
+        }
 
-            //타이핑중
-            $('#message').on("input",function(){
-                const msgValue = $("#message").val()
-                socket.emit("typing", myName, msgValue);
-            })
-            socket.on("type", (chatName, msgValue)=>{
-                //타임아웃함수 제거해주는 함수
-                clearTimeout(timer)
-                $("#messageStatus")[0].style.display = "block";
-                    timer = setTimeout(function(){
-                        $("#messageStatus")[0].style.display = "none";
-                    }, 3000);   //3초뒤에 문구 삭제함
-                });
-        </script>
-    </body>
+        //채팅텍스트
+        p.textContent = bool
+          ? "(귓속말)" + nick + ": " + message
+          : nick + ": " + message;
+        div.appendChild(p);
+        msg.appendChild(div);
+      });
+      ///폼 이벤트
+      roomForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const roomName = roomForm.querySelector("#roomName");
+        const userName = roomForm.querySelector("#userName");
+
+        if (roomName.value === "" || userName.value === "") {
+          alert("방이름과 닉네임 적어주세요");
+          return;
+        }
+        socket.emit("create", roomName.value, userName.value, () => {
+          const main = document.querySelector("#main");
+          const body = document.querySelector("#body");
+          main.hidden = true;
+          body.hidden = false;
+          //전역변수에 입력한 닉네임을 저장
+          myName = userName.value;
+        });
+      });
+      chatForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const user = document.querySelector("#userList");
+        const message = document.querySelector("#message");
+        const lists = document.querySelector("#userList");
+        const msg = {
+          nick: myName,
+          user: user.value,
+          message: message.value,
+        };
+        socket.emit("sendMessage", msg, lists.value);
+        message.value = "";
+      });
+      //입장안내문구
+      socket.on("notice", (user) => {
+        console.log(`${user} 님이 입장하셨습니다.`);
+        const div = document.createElement("div");
+        const p = document.createElement("p");
+        p.textContent = user + "님이 입장하셨습니다.";
+        div.appendChild(p);
+        msg.appendChild(div);
+      });
+
+      socket.on("leave", (user, len) => {
+        //접속자수 -1 해주기
+        $("#userlength").text(`현재 접속자 수 : ${len - 1}`);
+        const div = document.createElement("div");
+        const p = document.createElement("p");
+        p.textContent = user + "님이 나가셨습니다..";
+        div.appendChild(p);
+        msg.appendChild(div);
+      });
+      //타이핑중
+      //#message -> 메세지 입력 input
+      //#messageStatus -> 입력중입니다. div 태그 id
+      $("#message").on("input", function () {
+        const msgValue = $("#message").val();
+        socket.emit("typing", myName, msgValue);
+      });
+      socket.on("type", (chatName, msgValue) => {
+        //타임아웃함수 제거해주는 함수
+        clearTimeout(timer);
+        $("#messageStatus")[0].style.display = "block";
+        timer = setTimeout(function () {
+          $("#messageStatus")[0].style.display = "none";
+        }, 2000); //2초뒤에 문구 삭제함
+      });
+
+      //실시간 접속자 확인
+
+      //파일 업로드
+      function upload(files) {
+        console.log("file", files);
+        socket.emit("upload", files[0], myName, files[0].type);
+      }
+
+      //보낸 이미지 받고 출력하는부분
+      socket.on("newImage", (b64, username, type) => {
+        const div = document.createElement("div");
+        const p = document.createElement("p");
+        console.log("보낸사람이름", username);
+        console.log("현재내이름", myName);
+        if (myName == username) {
+          div.classList.add("my-chat");
+        } else {
+          div.classList.add("other-chat");
+        }
+        p.innerHTML = `<img src="data:${type};base64,${b64}" style="width: 100px; height: 100px;"/>`;
+        div.appendChild(p);
+        msg.appendChild(div);
+      });
+      //나가기
+      function out() {
+        socket.emit("disconnection", myName, userlength);
+        location.reload();
+      }
+    </script>
+  </body>
 </html>
