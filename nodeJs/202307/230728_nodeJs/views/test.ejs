@@ -11,7 +11,7 @@
     <%= name[0] %>
     '<%= name[0] %>'
     <div class="apple"></div>
-    <button type="button" onclick="changeFruits'(<%= name[0] %>)">사과</button>
+    <button type="button" onclick="changeFruits(`<%= name[0] %>`)">사과</button>
     <button type="button" onclick="changeFruits(`<%= name[1] %>`)">바나나</button>
     <button type="button" onclick="changeFruits(`<%= name[2] %>`)">포도</button>
     <button type="button" onclick="changeFruits(`<%= name[3] %>`)">복숭아</button>
@@ -22,6 +22,7 @@
             $("div").removeClass().addClass(fruit)
         }
     </script>
+        <script src="../js/index.js"></script>
 </script>
 </body>
 </html>
