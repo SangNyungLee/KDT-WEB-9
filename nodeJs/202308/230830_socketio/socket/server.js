@@ -49,6 +49,7 @@ io.on("connection", (socket) => {
   //socket은 접속한 웹페이지, io는 접속해있는 모든 웹페이지
   //웹 페이지가 접속이되면 고유한 id값이 생성됨. socket.id로 확인가능
   //console.log(io.sockets);
+  console.log("방금 생성된 아이디의 소켓값", socket)
   //채팅방 목록 보내기
   socket.emit("roomList", roomList);
   //채팅방 만들기 생성
