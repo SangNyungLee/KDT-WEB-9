@@ -1,13 +1,12 @@
-const express = require('express')
-const router = express.Router() //변수만들고 익스프레스에서 router만 가져오기
+const express = require("express");
+const router = express.Router(); //변수만들고 익스프레스에서 router만 가져오기
 // 컨트롤러 한테 실행시켜줘 라는 명령어 -1
-const controller = require('../controller/CComment')
-
+const controller = require("../controller/CComment");
 
 // -2 밑에 애들이랑 똑같은거임
-router.get('/', controller.main);
-router.get('/comments', controller.comments);
-router.get('comments/:id', controller.comments);
+router.get("/", controller.main);
+router.get("/comments", controller.comments);
+router.get("comments/:id", controller.comments);
 
 /*
 //router 변수는 위에 선언한 변수이름임
