@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 제이쿼리 CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- socket io -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>알림</h2>
+    <div id="notify"></div>
+    <h1>채팅방</h1>
+    아이디 :
+    <div id="useid"></div>
+    이름 :
+    <div id="usename"></div>
+    <div><h2>현재 접속자</h2></div>
+    <div>
+      <ul id="nowList"></ul>
+    </div>
+    <div><h2>내 방 리스트</h2></div>
+    <div>
+      <ul id="userlist"></ul>
+    </div>
+    <form id="room">
+      방 번호 적기<input type="text" id="roomname" />
+      <button>방들어가기</button>
+    </form>
+    <button onclick="gogo()">전체채팅방 접속</button>
+    <form id="chat">
+      <input type="text" id="message" />
+      <button>보내기</button>
+    </form>
+    <div id="chatting"></div>
+    <script>
+      const socket = io();
+      //보내는 시간 계산
+      let now = new Date();
+      let hour = now.getHours();
+      let minute = now.getMinutes();
+      
+      //현재 갱신받은 리스트 받는 곳
+      socket.on("nowOn", () => {
+        clear2.innerHTML = "";
+        axios({
+          method: "POST",
+          url: "ConnectUser",
+        }).then((res) => {
+          console.log(res.data);
+          let result = res.data;
+          result.forEach((res) => {
+            console.log(res.userid);
+            const li = document.createElement("li");
+            li.textContent = `접속자 : ${res.userid}`;
+            nowList.appendChild(li);
+          });
+        });
+      });
+      //내 방 목록
+      let roomList;
+      //메세지 띄우기
+      msg = document.querySelector("#chatting");
+
+      //채팅리스트
+      const clear = document.getElementById("chatting");
+      const clear2 = document.getElementById("nowList");
+
+      //방입력하는 form
+      const roomForm = document.querySelector("#room");
+
+      //메세지 form
+      const messageForm = document.querySelector("#chat");
+
+      //아이디랑 닉네임
+      const userid = localStorage.getItem("user_id");
+
+      //내 닉네임
+      const name = localStorage.getItem("user_name");
+
+      //상대방 닉네임
+      let otherName;
+
+      //아이디 불러오기
+      $("#useid").text(userid);
+      $("#usename").text(name);
+
+      //이 아이디 배열 리스트
+      let mylist;
+
+      //내가 들어간 방 번호
+      let realNumber;
+
+      //현재 접속자
+
+      //알람 받았을 때
+      socket.on("notification", (name)=>{
+        alert(`${name}님에게 메세지가 도착했습니다.~~~`)
+      })
+      //아이디 보내서 내가 속한 방 리스트 값 가져오는거
+      axios({
+        method: "POST",
+        url: "/chat",
+        data: {
+          userid: localStorage.getItem("user_id"),
+        },
+      }).then((res) => {
+        const userlist = document.querySelector("#userlist");
+        let list = res.data;
+        mylist = res.data;
+        let i = 1;
+        list.forEach((res) => {
+          const li = document.createElement("li");
+          li.textContent = `${i}번째 방 : ${res}`;
+          //li에 id값 부여
+          li.setAttribute("id", `${res}`);
+          i++;
+
+          //방 목록 클릭했을 때 그 방으로 들어가게 해주는거
+          li.addEventListener("click", async function (e) {
+            e.preventDefault();
+            const roomName = roomForm.querySelector("#roomname");
+
+            //채팅하는 상대방 이름 저장(이름 저장하는 방법은 추후에 변경)
+            socket.emit("create", res, userid, mylist);
+            alert(`들어간 방 이름은 ${res} 입니다.`);
+
+            // 이전채팅내용 가져오기
+            await socket.on("roomNumber", (data) => {
+              axios({
+                method: "POST",
+                url: "/preMessage",
+                data: {
+                  roomNum: data,
+                },
+              }).then((res) => {
+                clear.innerHTML = "";
+                const postMessage = res.data.chatMessage;
+                postMessage.forEach((row) => {
+                  const div = document.createElement("div");
+                  const p = document.createElement("p");
+                  p.textContent = `${row.send} : ${row.message}`;
+                  div.appendChild(p);
+                  msg.appendChild(div);
+                });
+              });
+            });
+          });
+          userlist.appendChild(li);
+        });
+      });
+
+      //방 번호 정해서 들어가기
+      roomForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const roomName = roomForm.querySelector("#roomname");
+        otherName = roomName.value
+        console.log("방이름", roomName.value);
+        //mylist : 지금 로그인한 애가 가지고 있는 방의 배열
+        socket.emit("create", roomName.value, userid, mylist);
+        socket.on("preMessage", (message) => {
+          message.forEach((row) => {
+            const div = document.createElement("div");
+            const p = document.createElement("p");
+            p.textContent = `${row.send} : ${row.message}`;
+            div.appendChild(p);
+            msg.appendChild(div);
+          });
+        });
+      });
+
+      //메시지 보내기
+      messageForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const message = document.querySelector("#message");
+        socket.emit("sendMessage", message.value, userid, otherName);
+      });
+
+      socket.on("newMessage", (message) => {
+        console.log("메세지?", message);
+        const div = document.createElement("div");
+        const p = document.createElement("p");
+        p.textContent = message;
+        div.appendChild(p);
+        msg.appendChild(div);
+      });
+      //전체 채팅방 들어가기
+      async function gogo() {
+        socket.emit("groupChat", userid);
+        alert("전체 채팅방 입장");
+        const roomName = 999;
+        await socket.on("999Room", (data) => {
+          console.log("!!!!!!!!!!!왓다!!!!!!!!!!!!");
+          axios({
+            method: "POST",
+            url: "/preMessage",
+            data: {
+              roomNum: 999,
+            },
+          }).then((res) => {
+            clear.innerHTML = "";
+            const postMessage = res.data.chatMessage;
+            postMessage.forEach((row) => {
+              const div = document.createElement("div");
+              const p = document.createElement("p");
+              p.textContent = `${row.send} : ${row.message}`;
+              div.appendChild(p);
+              msg.appendChild(div);
+            });
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
