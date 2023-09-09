@@ -24,6 +24,8 @@ router.patch('/edit', controller.patchVisitor);
 // // DELETE /visitor/delete 방명록 하나 삭제
 router.delete('/delete', controller.deleteVisitor);
 
-
-
+//캘린더 열기
+router.get("/calendar", controller.calendar);
+//데이터전송
+router.post("/calendar", controller.post_calendar);
 module.exports = router;
