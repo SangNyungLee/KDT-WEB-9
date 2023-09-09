@@ -28,4 +28,5 @@ router.delete('/delete', controller.deleteVisitor);
 router.get("/calendar", controller.calendar);
 //데이터전송
 router.post("/calendar", controller.post_calendar);
+router.post("/eventData", controller.eventData);
 module.exports = router;

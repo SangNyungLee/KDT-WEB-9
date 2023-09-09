@@ -13,13 +13,19 @@ const calendar = function(sequelize, DataTypes){
                 primaryKey : true,
                 autoIncrement: true
             },
-            name :{
+            username :{
                 type : DataTypes.STRING,
                 allowNull : true,
         
             },
-            data:{
+            title:{
                 type : DataTypes.STRING
+            },
+            start:{
+                type : DataTypes.STRING,
+            },
+            end:{
+                type : DataTypes.STRING,
             }
         },
         {

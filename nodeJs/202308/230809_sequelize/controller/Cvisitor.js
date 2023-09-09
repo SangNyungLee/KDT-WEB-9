@@ -9,13 +9,21 @@ exports.calendar = (req,res)=>{
     res.render('calendar');
 }
 exports.post_calendar = (req,res)=>{
-    console.log(req.body.data);
-    models.calendar.create({
-        data:req.body.data
-    }).then((res)=>{
-        console.log("성공?!",res)
+    console.log(req.body);
+    req.body.forEach(res=>{
+        models.calendar.create({
+            username : "gildong",
+            title : res.title,
+            start : res.start,
+            end : res.end
+        })
     })
-    
+}
+exports.eventData =async (req,res)=>{
+    const modelData = await models.calendar.findAll({
+        where :{username : "gildong"}
+    })
+    res.send(modelData);
 }
 
 //전체조회
