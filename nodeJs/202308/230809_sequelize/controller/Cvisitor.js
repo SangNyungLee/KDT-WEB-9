@@ -1,10 +1,31 @@
 //model에 있는거 가져오기
 
 const models = require('../models');
-
 exports.main = (req,res) =>{
     res.render('index')
 }
+//캘린더
+exports.calendar = (req,res)=>{
+    res.render('calendar');
+}
+exports.post_calendar = (req,res)=>{
+    console.log(req.body);
+    req.body.forEach(res=>{
+        models.calendar.create({
+            username : "gildong",
+            title : res.title,
+            start : res.start,
+            end : res.end
+        })
+    })
+}
+exports.eventData =async (req,res)=>{
+    const modelData = await models.calendar.findAll({
+        where :{username : "gildong"}
+    })
+    res.send(modelData);
+}
+
 //전체조회
 exports.getVisitors = (req,res) =>{
     models.Visitor.findAll().then((result) =>{
@@ -52,3 +73,4 @@ exports.deleteVisitor = (req,res)=>{
         res.send({result:true});
     });
 };
+

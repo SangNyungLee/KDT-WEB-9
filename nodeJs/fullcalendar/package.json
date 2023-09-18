@@ -1,5 +1,5 @@
 {
-  "name": "230807_mvc_mysql",
+  "name": "fullcalendar",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,11 +12,6 @@
   "dependencies": {
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "index.js": "^0.0.3",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.6.0",
-    "nodemon": "^3.0.1",
-    "sequelize": "^6.32.1",
-    "sequelize-cli": "^6.6.1"
+    "fullcalendar": "^6.1.8"
   }
 }

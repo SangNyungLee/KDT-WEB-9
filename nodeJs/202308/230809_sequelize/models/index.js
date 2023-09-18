@@ -8,7 +8,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 
 //model
 db.Visitor = require('./Visitor')(sequelize,Sequelize)
-
+db.calendar = require('./calendar')(sequelize,Sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
