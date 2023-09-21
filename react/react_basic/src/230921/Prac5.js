@@ -5,18 +5,21 @@ export default function Prac5() {
   const [inputTodo, setInputTodo] = useState([]); //input에 입력할 값
 
   const addTodo = () => {
-    if (todos.length > 10) {
+    if (todos.length >= 10) {
       alert("할 일이 너무 많아요!");
+      console.log(todos)
+    }else{
+      if (inputTodo !== "") {
+        const newTodo = {
+          id: Date.now(),
+          text: inputTodo,
+          checked: false,
+        };
+        setTodos([...todos, newTodo]);
+        setInputTodo("");
+      }
     }
-    if (inputTodo !== "") {
-      const newTodo = {
-        id: Date.now(),
-        text: inputTodo,
-        checked: false,
-      };
-      setTodos([...todos, newTodo]);
-      setInputTodo("");
-    }
+
   };
 
   const toggleTodo = (id) => {
