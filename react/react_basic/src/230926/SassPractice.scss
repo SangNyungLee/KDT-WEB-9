@@ -1,0 +1,43 @@
+@import "_utils.scss";
+
+.circle {
+  position: absolute;
+  @include box(100px);
+  border-radius: 50%;
+  &.eye {
+    background-color: $color-white;
+    @include box(40px);
+    @include top_left(70px, 70px, 6);
+  }
+  &.eye2 {
+    background-color: $color-black;
+    @include box(20px);
+    @include top_left(80px, 70px, 7);
+  }
+  &.one {
+    background-color: $color-blue;
+    @include top_left(50px, 50px, 1);
+  }
+  &.two {
+    background-color: $color-skyblue;
+    @include top_left(100px, 120px, 2);
+  }
+  &.three {
+    background-color: $color-indigo;
+    @include top_left(140px, 160px, 3);
+  }
+  &.four {
+    background-color: $color-four;
+    @include top_left(140px, 220px, 4);
+  }
+  &.five {
+    background-color: $color-five;
+    @include top_left(140px, 290px, 8);
+  }
+}
+.pic {
+  position: absolute;
+  width: 400px;
+  height: 110px;
+  @include top_left(150px, 0px, 5);
+}

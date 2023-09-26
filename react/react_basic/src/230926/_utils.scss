@@ -1,0 +1,49 @@
+//_utils.scss
+//scss파일 명 앞에 _를 붙여서 생성하면 파일 단위로 분리되어 컴파일 되지 않는다.
+
+$color-red: red;
+$color-orange: orange;
+$color-yellow: yellow;
+$color-green: green;
+$color-blue: blue;
+$color-navy: navy;
+$color-purple: rgb(156, 27, 163);
+$color-white: white;
+$color-black: black;
+$color-skyblue: skyblue;
+$color-indigo: indigo;
+$color-four: rgb(19, 19, 126);
+$color-five: rgb(121, 121, 212);
+
+@mixin box($size) {
+  width: $size;
+  height: $size;
+}
+@mixin top_left($top, $left, $z_index) {
+  top: $top;
+  left: $left;
+  z-index: $z_index;
+}
+@mixin animation($delay, $duration, $name) {
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $name;
+  animation-iteration-count: infinite;
+}
+
+@mixin keyframe($animation_name, $width) {
+  @keyframes #{$animation_name} {
+    25% {
+      transform: translateX(#{$width});
+    }
+    50% {
+      transform: translate(#{$width}, #{$width});
+    }
+    75% {
+      transform: translateY(#{$width});
+    }
+    100% {
+      transform: translate(0px, 0px);
+    }
+  }
+}

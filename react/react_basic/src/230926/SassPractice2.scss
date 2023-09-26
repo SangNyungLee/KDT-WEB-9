@@ -1,0 +1,21 @@
+@import "./utils.scss";
+
+.box {
+  border-radius: 50%;
+  @include box(50px);
+  &.one {
+    background-color: $color-skyblue;
+    @include keyframe(one, 100px);
+    @include animation(0s, 1s, one);
+  }
+  &.two {
+    background-color: $color-four;
+    @include keyframe(two, 200px);
+    @include animation(0s, 1s, two);
+  }
+  &.three {
+    background-color: $color-indigo;
+    @include keyframe(three, 300px);
+    @include animation(0s, 1s, three);
+  }
+}
