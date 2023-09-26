@@ -5,7 +5,8 @@ import ReactDOM from "react-dom/client";
 // import App230920 from "./230920/App230920";
 // import App230921 from "./230921/App230921";
 // import App230922 from "./230922/App230922";
-import App230925 from "./230925/App230925";
+// import App230925 from "./230925/App230925";
+import App230926 from "./230926/App230926";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ root.render(
     {/* <App230920 /> */}
     {/* <App230921 /> */}
     {/* <App230922 /> */}
-    <App230925 />
+    {/* <App230925 /> */}
+    <App230926 />
   </React.StrictMode>
 );
