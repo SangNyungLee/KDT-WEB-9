@@ -32,7 +32,7 @@ function App() {
       {/* <BookComponent book={book}></BookComponent> */}
       {/* <Event /> */}
       {/* <EventClass></EventClass> */}
-      <EventComponent message={"메시지입니다.."}></EventComponent>
+      {/* <EventComponent message={"메시지입니다.."}></EventComponent> */}
     </>
   );
 }

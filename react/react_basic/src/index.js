@@ -6,7 +6,11 @@ import ReactDOM from "react-dom/client";
 // import App230921 from "./230921/App230921";
 // import App230922 from "./230922/App230922";
 // import App230925 from "./230925/App230925";
-import App230926 from "./230926/App230926";
+// import App230926 from "./230926/App230926";
+import App230927 from "./230927/App230927";
+import { RouterProvider } from "react-router-dom";
+import Router from "./230927/Router";
+import AppPrac from "./230927_practice/AppPrac";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -16,6 +20,9 @@ root.render(
     {/* <App230921 /> */}
     {/* <App230922 /> */}
     {/* <App230925 /> */}
-    <App230926 />
+    {/* <App230926 /> */}
+    {/* <App230927 /> */}
+    {/* <RouterProvider router={Router} /> */}
+    <AppPrac />
   </React.StrictMode>
 );
