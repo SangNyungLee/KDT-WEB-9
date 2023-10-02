@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 export default function Header() {
   const [todos, setTodos] = useState([]);
-  const [inputTodo, setInputTodo] = useState([]);
+  const [inputTodo, setInputTodo] = useState("");
 
+  useEffect(() => {
+    const getTodo = async () => {
+      const result = await axios.get("http://localhost:8000/todos");
+      setTodos(result.data);
+    };
+    getTodo();
+  }, []);
   const addTodos = async () => {
     try {
       const newTodo = {
@@ -20,8 +27,20 @@ export default function Header() {
       console.log("전송에러", error);
     }
   };
-  const toggleTodo = (id) => {
-    console.log(id);
+
+  const toggleTodo = async (id) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id
+          ? { ...todo, checked: !todo.checked, done: !todo.done }
+          : todo
+      )
+    );
+  };
+  const updateTodoTitle = (id, newTitle) => {
+    setTodos((prev) =>
+      prev.map((todo) => (todo.id === id ? { ...todo, title: newTitle } : todo))
+    );
   };
   const removeTodo = () => {};
   const deleteTodo = async (event) => {
@@ -46,9 +65,16 @@ export default function Header() {
               <input
                 type="checkbox"
                 checked={value.checked}
-                onChange={() => toggleTodo(value.id)}
+                onChange={() => {
+                  toggleTodo(value.id);
+                }}
               />
-              {value.title}{" "}
+              <input
+                type="text"
+                value={value.title}
+                readOnly={!value.checked}
+                onChange={(e) => updateTodoTitle(value.id, e.target.value)}
+              />
               <button id={value.id} onClick={deleteTodo}>
                 Delete
               </button>
