@@ -1,0 +1,43 @@
+html {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.headTitle {
+  text-align: center;
+  background-color: #708cf7;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 0px 10px 0px;
+}
+
+.headInput {
+  width: 90%;
+  border: 0px;
+  border-bottom: 1px solid #abbefa;
+  margin-right: 10px;
+}
+.addTodo {
+  background-color: #708cf7;
+  border-radius: 20%;
+}
+
+.todoList {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.todoListValue {
+  width: 86%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border: 0px;
+  border-bottom: 1px solid;
+}
+.todoLength {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.headDiv {
+  /* width: 100%; */
+}

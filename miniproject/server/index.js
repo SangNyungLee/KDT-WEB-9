@@ -3,10 +3,12 @@ const app = express();
 const PORT = 8000;
 const controller = require("./controller/index");
 const db = require("./models");
+const cors = require("cors");
 
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get("/todos", controller.get_todo);
 app.post("/todo", controller.post_todo);
