@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      import axios from "await";
+    </script>
+  </head>
+  <body>
+    <input type="text" id="textValue" />
+    <button onclick="addText()">추가하기</button>
+
+    <script>
+      async function addText() {
+        txtValue = document.querySelector("#textValue").value;
+        console.log(txtValue);
+        const result = await axios({
+          method: "POST",
+          url: "/todo",
+          data: {
+            title: txtValue,
+            done: false,
+          },
+        });
+        console.log(result);
+      }
+    </script>
+  </body>
+</html>
