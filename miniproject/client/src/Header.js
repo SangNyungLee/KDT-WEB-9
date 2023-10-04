@@ -62,7 +62,8 @@ export default function Header() {
     );
   };
 
-  const keyPressEnter = async (id, newTitle) => {
+  const keyPressEnter = async (e, id, newTitle) => {
+    e.target.blur();
     console.log("아이디값", id);
     console.log("들어간 값은?", newTitle);
     const result = await axios.patch(`http://localhost:8000/todo/:${id}`, {
@@ -101,7 +102,7 @@ export default function Header() {
                   onChange={(e) => updateTodoTitle(value.id, e.target.value)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                      keyPressEnter(value.id, e.target.value);
+                      keyPressEnter(e, value.id, e.target.value);
                     }
                   }}
                 />
