@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import MyContext from "./store/lang-context";
-export default function LangSelector() {
+import { MyContext } from "./store/lang-context";
+export function LangSelector() {
   const v = useContext(MyContext);
   //두번째 방법
   return (
