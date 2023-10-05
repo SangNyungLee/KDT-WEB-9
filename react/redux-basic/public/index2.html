@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Todos</h1>
+    <form>
+      <input type="text" id="input" placeholder="할 일 추가" />
+      <button>ADD</button>
+    </form>
+    <ul></ul>
+  </body>
+  <script>
+    const input = document.querySelector("input");
+    const form = document.querySelector("form");
+    const ul = document.querySelector("ul");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log("first");
+    });
+  </script>
+</html>
