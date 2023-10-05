@@ -11,7 +11,8 @@ import ReactDOM from "react-dom/client";
 // import { RouterProvider } from "react-router-dom";
 // import Router from "./230927/Router";
 // import AppPrac from "./230927_practice/AppPrac";
-import App231004 from "./231004/App231004";
+// import App231004 from "./231004/App231004";
+import App231005 from "./231005/App231005";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ root.render(
     {/* <App230927 /> */}
     {/* <RouterProvider router={Router} /> */}
     {/* <AppPrac /> */}
-    <App231004 />
+    {/* <App231004 /> */}
+    <App231005 />
   </React.StrictMode>
 );
