@@ -1,3 +1,18 @@
+import React from "react";
+import ReactDom from "react-dom/client";
+import App from "./App";
+import { Provider } from "react-redux";
+import store from "./store/cart-store";
+const root = ReactDom.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+
+/*
 //redux를 이용한 숫자 증/감 코드
 import { createStore } from "redux";
 
