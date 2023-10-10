@@ -25,6 +25,7 @@ export default function ProductList() {
   const addProduct = (product) => {
     setCart([...cart, product]);
   };
+
   return (
     <div>
       <h2>상품 리스트</h2>
