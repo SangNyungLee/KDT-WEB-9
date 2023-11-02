@@ -3,7 +3,7 @@ import { counterAction } from "./store";
 var interval;
 export default function Counter() {
   const counter = useSelector((state) => state.count.counter);
-  console.log(counter);
+  console.log("카운터 부분", counter);
   const dispatch = useDispatch();
   const ADD = () => {
     dispatch(counterAction.increment());

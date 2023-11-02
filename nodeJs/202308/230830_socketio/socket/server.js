@@ -14,9 +14,9 @@ const server = http.createServer(app);
 const io = SocketIO(server);
 
 //업로드 파일경로
-const upload = multer({
-  dest: "uploads/", //업로드할 파일을 지정
-});
+// const upload = multer({
+//   dest: "uploads/", //업로드할 파일을 지정
+// });
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
@@ -99,7 +99,7 @@ io.on("connection", (socket) => {
 
   //파일 업로드
   socket.on("upload", (file, username, type) => {
-    console.log(file); //버퍼값으로 옴
+    console.log("받은파일", file); //버퍼값으로 옴
 
     writeFile("/uploads", file, (err) => {
       console.log(err);

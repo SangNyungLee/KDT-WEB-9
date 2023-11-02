@@ -252,11 +252,16 @@
       //파일 업로드
       function upload(files) {
         console.log("file", files);
+        console.log("파일1", files[0]);
+        console.log("파일이름?", myName);
+        console.log("파일타입", files[0].type);
         socket.emit("upload", files[0], myName, files[0].type);
       }
 
       //보낸 이미지 받고 출력하는부분
       socket.on("newImage", (b64, username, type) => {
+        console.log("!!!!!!!!!!", b64);
+        console.log("타입", type);
         const div = document.createElement("div");
         const p = document.createElement("p");
         console.log("보낸사람이름", username);
